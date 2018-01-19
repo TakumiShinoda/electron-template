@@ -1,0 +1,26 @@
+{
+  "name": "zny-utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "gulp start",
+    "compile-pug": "gulp pug_compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/tshinoda1145/zny-utils.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/tshinoda1145/zny-utils#readme",
+  "devDependencies": {
+    "electron": "^1.8.1",
+    "electron-connect": "^0.6.3",
+    "gulp": "^3.9.1",
+    "gulp-pug": "^3.3.0"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
+}
