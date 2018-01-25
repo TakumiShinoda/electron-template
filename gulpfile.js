@@ -22,8 +22,8 @@ gulp.task('pug_compile', () => {
 });
 
 gulp.task('asset_copy', () => {
-  gulp.src(['src/assets/**'], {base: 'src/assets'})
-  .pipe(gulp.dest('./dist/assets'));
+  gulp.src(['src/assets/javascript/node_dependencies.js'], {base: 'src/assets/javascript'})
+  .pipe(gulp.dest('./dist/js'));
 });
 
 gulp.task('build_dist', () => {

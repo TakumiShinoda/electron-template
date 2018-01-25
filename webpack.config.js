@@ -19,7 +19,7 @@ module.exports = {
         ]
       },
       plugins: [
-        new ExtractTextPlugin('../css/bundle.css'),
+        new ExtractTextPlugin('../bundles/style.css'),
       ]
     };
   }
