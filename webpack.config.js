@@ -1,9 +1,10 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const {srcPath, distPath} = require('./dev/path');
 
 module.exports = {
   config: (routes) => {
     return {
-      entry: "./src/assets/javascript/"+ routes +"/"+ routes +".entry.js",
+      entry: srcPath.js("/"+ routes +"/"+ routes +".entry.js"),
       output: {
         filename: routes + ".js"
       },
@@ -19,7 +20,7 @@ module.exports = {
         ]
       },
       plugins: [
-        new ExtractTextPlugin('../bundles/style.css'),
+        new ExtractTextPlugin(distPath.bundle('/style.css')),
       ]
     };
   }
