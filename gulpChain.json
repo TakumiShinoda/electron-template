@@ -10,5 +10,8 @@
       "base": "src/assets/javascript",
       "dest": "./dist/js"
     }
+  ],
+  "routes": [
+    "index"
   ]
 }

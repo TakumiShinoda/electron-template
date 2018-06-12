@@ -1,4 +1,5 @@
 const electron = require('electron');
+const {distPath} = require('../dev/path');
 
 electron.app.on('ready', () => {
   mainWindow = new electron.BrowserWindow({
@@ -7,7 +8,7 @@ electron.app.on('ready', () => {
     resizable: false,
     movable: true,
   });
-  mainWindow.loadURL('file://' + __dirname + '/dist/views/index/index.html');
+  mainWindow.loadURL('file://' + distPath.views('/index/index.html'));
 
   mainWindow.on('closed', () => {
     mainWindow = null;
