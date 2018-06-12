@@ -3,8 +3,8 @@ const pug = require('gulp-pug');
 const electron = require('electron-connect').server.create();
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
-const webpackConfig = require('./webpack.config.js');
-const {copyChain, routes} = require('./gulpChain.json');
+const webpackConfig = require('./dev/webpack.config.js');
+const {copyChain, routes} = require('./dev/gulpChain.json');
 const {distPath, srcPath} = require('./dev/path');
 
 gulp.task('make_bundle', () => {

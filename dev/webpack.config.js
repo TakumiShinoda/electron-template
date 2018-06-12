@@ -1,6 +1,5 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-const path = require('path');
-const {srcPath, distPath} = require('./dev/path');
+const {srcPath, distPath} = require('./path');
 
 module.exports = {
   config: (routes) => {
