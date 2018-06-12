@@ -1,5 +1,9 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
 const {srcPath, distPath} = require('./dev/path');
+
+var distCss = distPath.bundle('/style.css');
+distCss = path.relative(__dirname, distCss);
 
 module.exports = {
   config: (routes) => {
@@ -20,7 +24,7 @@ module.exports = {
         ]
       },
       plugins: [
-        new ExtractTextPlugin(distPath.bundle('/style.css')),
+        new ExtractTextPlugin('/style.css'),
       ]
     };
   }

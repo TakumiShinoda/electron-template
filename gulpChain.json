@@ -1,0 +1,14 @@
+{
+  "copyChain": [
+    {
+      "src": "src/assets/javascript/index/webviewResources/**",
+      "dase": "src/assets/javascript/index/webviewResources/",
+      "dest": "./dist/js/index/webviewResources"
+    },
+    {
+      "src": "src/assets/javascript/node_dependencies.js",
+      "base": "src/assets/javascript",
+      "dest": "./dist/js"
+    }
+  ]
+}

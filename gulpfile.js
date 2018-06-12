@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
 const routes = require('./router.js').routes;
 const webpackConfig = require('./webpack.config.js');
+const {copyChain} = require('./gulpChain.json');
 
 gulp.task('make_bundle', () => {
   for(var i = 0; i < routes.length; i++){
@@ -22,8 +23,10 @@ gulp.task('pug_compile', () => {
 });
 
 gulp.task('asset_copy', () => {
-  gulp.src(['src/assets/javascript/node_dependencies.js'], {base: 'src/assets/javascript'})
-  .pipe(gulp.dest('./dist/js'));
+  copyChain.forEach((c) => {
+    gulp.src([c.src], {base: c.base})
+    .pipe(gulp.dest(c.dest));
+  });
 });
 
 gulp.task('build_dist', () => {
