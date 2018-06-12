@@ -4,7 +4,7 @@ const {srcPath, distPath} = require('./path');
 module.exports = {
   config: (routes) => {
     return {
-      entry: srcPath.js("/"+ routes +"/"+ routes +".entry.js"),
+      entry: srcPath.entries("/" + routes + ".entry.js"),
       output: {
         filename: routes + ".js"
       },
