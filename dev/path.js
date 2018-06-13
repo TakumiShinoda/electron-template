@@ -7,6 +7,9 @@ module.exports = {
     },
     entries: (file) => {
       return path.resolve(__dirname, '../src/entries') + file;
+    },
+    images: (file) => {
+      return path.resolve(__dirname, '../src/assets/images') + file;
     }
   },
   distPath: {
