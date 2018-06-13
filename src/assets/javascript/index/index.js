@@ -3,7 +3,7 @@ $(document).ready(() => {
   var webviewExm1 = $('#webviewExm1')[0];
 
   webviewSetJs(webviewExm1);
-  webviewExm1.openDevTools();
+  // webviewExm1.openDevTools();
 });
 
 function webviewSetJs(ele){
