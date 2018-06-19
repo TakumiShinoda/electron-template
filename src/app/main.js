@@ -1,6 +1,5 @@
 const {Tray, app, BrowserWindow, Menu} = require('electron');
-const {distPath, srcPath} = require('../dev/path');
-
+const {distPath, srcPath} = require('../../dev/path');
 
 var mainWindow = null;
 var forceQuit = false;
@@ -31,6 +30,7 @@ app.on('ready', () => {
 
   tray.on('click', () => {
 　　if(mainWindow != null){
+      console.log('hoge')
       mainWindow.show();
     }
   });
@@ -48,6 +48,7 @@ app.on('ready', () => {
       mainWindow = null;
       app.quit();
     }else{
+      console.log('hide');
       e.preventDefault();
       mainWindow.hide();
     }
