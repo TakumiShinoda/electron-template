@@ -31,9 +31,17 @@ gulp.task('asset_copy', () => {
 
 gulp.task('build_dist', ['asset_copy', 'pug_compile', 'make_bundle']);
 
-gulp.task('start', ['build_dist'], () =>{
+gulp.task('start', ['build_dist'], () => {
   gulp.watch(['./src/**'], ['build_dist']);
-  gulp.watch(['./src/main.js'], electron.restart);
-
+  gulp.watch(['./src/app/main.js'], () => {
+    electron.restart();
+  });
   electron.start();
+});
+
+process.on('exit', () => {
+  try{
+    electron.stop();
+  }catch(e){
+  }
 });
