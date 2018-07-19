@@ -9,7 +9,7 @@ app.on('ready', () => {
     movable: true,
     transparent: true,
     titleBarStyle: 'hidden',
-    frame: false
+    // frame: false,
   });
   mainWindow.loadURL('file://' + distPath.views('/index/index.html'));
 
