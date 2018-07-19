@@ -1,8 +1,8 @@
-const electron = require('electron');
-const {distPath} = require('../dev/path');
+const {app, BrowserWindow} = require('electron');
+const {distPath} = require('../../dev/path');
 
-electron.app.on('ready', () => {
-  mainWindow = new electron.BrowserWindow({
+app.on('ready', () => {
+  mainWindow = new BrowserWindow({
     width: 640,
     height: 480,
     resizable: false,
