@@ -5,8 +5,11 @@ app.on('ready', () => {
   mainWindow = new BrowserWindow({
     width: 640,
     height: 480,
-    resizable: false,
+    resizable: true,
     movable: true,
+    transparent: true,
+    titleBarStyle: 'hidden',
+    frame: false
   });
   mainWindow.loadURL('file://' + distPath.views('/index/index.html'));
 

@@ -1,5 +1,8 @@
 body{
-  background: rgb(122,122,122);
+  -webkit-user-select: none;
+  background: rgba(122, 122, 122, 0.95);
+  margin-top: 20px;
+  padding: 10px;
 }
 
 #webviewExm1{
