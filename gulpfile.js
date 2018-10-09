@@ -8,40 +8,44 @@ const {copyChain, routes} = require('./dev/gulpChain.json');
 const {distPath, srcPath} = require('./dev/path');
 
 gulp.task('make_bundle', () => {
-  routes.forEach((r) => {
-    webpackStream(webpackConfig.config(r), webpack)
-    .pipe(gulp.dest('./dist/bundles'));
+  return new Promise((res) => {
+    for(var i = 0; i < routes.length; i++){
+      webpackStream(webpackConfig.config(routes[i]), webpack)
+        .pipe(gulp.dest('./dist/bundles/'));
+    }
+    res();
   });
 });
 
 gulp.task('pug_compile', () => {
-  return gulp.src(['./src/**/*.pug', '!./pug/**/_*.pug'])
-  .pipe(pug({
-    pretty: true
-  }))
-  .pipe(gulp.dest('./dist'));
+  return new Promise((res) => {
+    gulp.src(['./src/**/*.pug', '!./pug/**/_*.pug'])
+      .pipe(pug({
+        pretty: true
+      }))
+      .pipe(gulp.dest('./dist'));
+    res();
+  });
 });
 
 gulp.task('asset_copy', () => {
-  copyChain.forEach((c) => {
-    gulp.src([c.src], {base: c.base})
-    .pipe(gulp.dest(c.dest));
+  return new Promise((res) => {
+    for(var i = 0; i < copyChain.length; i++){
+      gulp.src(copyChain[i].src, {base: copyChain[i].base})
+        .pipe(gulp.dest(copyChain[i].dest));
+    }
+    res();
   });
 });
 
-gulp.task('build_dist', ['asset_copy', 'pug_compile', 'make_bundle']);
-
-gulp.task('start', ['build_dist'], () => {
-  gulp.watch(['./src/**'], ['build_dist']);
-  gulp.watch(['./src/app/main.js'], () => {
-    electron.restart();
+gulp.task('watcher', () => {
+  new Promise((res) => {
+    gulp.watch('./src/**', gulp.parallel('pug_compile', 'asset_copy', 'make_bundle'));
+    gulp.watch('./src/app/main.js', () => {
+      electron.restart();
+    });
+    electron.start();
   });
-  electron.start();
 });
 
-process.on('exit', () => {
-  try{
-    electron.stop();
-  }catch(e){
-  }
-});
+gulp.task('start', gulp.series(gulp.parallel('pug_compile', 'asset_copy'), 'make_bundle', 'watcher'));
