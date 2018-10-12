@@ -4,7 +4,7 @@ module.exports = {
   config: (routes) => {
     return {
       mode: 'development',
-      entry: srcPath.entries("/" + routes + ".entry.js"),
+      entry: './src/assets/typescript/index/index.ts',
       output: {
         filename: routes + ".js"
       },
@@ -24,7 +24,15 @@ module.exports = {
               },
             ],
           },
+          {
+            test: /\.ts$/,
+            use: 'ts-loader'
+          }
         ]
+      },
+      node: {
+        __dirname: false,
+        __filename: false
       },
     };
   }

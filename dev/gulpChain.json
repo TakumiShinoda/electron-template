@@ -1,24 +1,20 @@
 {
   "copyChain": [
     {
-      "src": "src/assets/javascript/index/webviewResources/**",
-      "dase": "src/assets/javascript/index/webviewResources/",
-      "dest": "./dist/js/index/webviewResources"
-    },
-    {
-      "src": "src/assets/javascript/node_dependencies.js",
-      "base": "src/assets/javascript",
-      "dest": "./dist/js"
-    },
-    {
-      "src": "src/assets/javascript/index/bootstrap/*",
-      "base": "src/assets/javascript/index",
-      "dest": "./dist/js"
+      "src": "src/assets/javascript/bootstrap/*",
+      "dest": "./dist/js/bootstrap"
     },
     {
       "src": "src/assets/css/index/bootstrap/*",
-      "base": "src/assets/css/index",
-      "dest": "./dist/css"
+      "dest": "./dist/css/bootstrap/"
+    },
+    {
+      "src": "src/assets/typescript/index/webviewResources/webviewExm1/didFinishLoad.js",
+      "dest": "./dist/js/index/webviewResources/webviewExm1/"
+    },
+    {
+      "src": "src/assets/typescript/index/webviewResources/webviewExm1/domReady.js",
+      "dest": "./dist/js/index/webviewResources/webviewExm1/"
     }
   ],
   "routes": [

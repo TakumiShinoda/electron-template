@@ -3,7 +3,8 @@ const path = require('path');
 module.exports = {
   srcPath: {
     js: (file) => {
-      return path.resolve(__dirname, '../src/assets/javascript') + file;
+      // return path.resolve(__dirname, '../src/assets/javascript') + file;
+      return __dirname + '../src/assets/javascript' + file;
     },
     entries: (file) => {
       return path.resolve(__dirname, '../src/entries') + file;
