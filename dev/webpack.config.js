@@ -34,6 +34,9 @@ module.exports = {
         __dirname: false,
         __filename: false
       },
+      resolve: {
+        extensions: [".ts", ".tsx", ".js"]
+      }
     };
   }
 }
