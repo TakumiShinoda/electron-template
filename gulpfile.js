@@ -13,6 +13,9 @@ gulp.task('make_bundle', () => {
   return new Promise((res) => {
     for(var i = 0; i < routes.length; i++){
       webpackStream(webpackConfig.config(routes[i]), webpack)
+        .on('error', function (e) {
+          this.emit('end');
+        })
         .pipe(plumber())
         .pipe(gulp.dest('./dist/bundles/'));
     }
