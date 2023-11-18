@@ -13,35 +13,38 @@ gulp.task('make_bundle', () => {
   return new Promise((res) => {
     for(var i = 0; i < routes.length; i++){
       webpackStream(webpackConfig.config(routes[i]), webpack)
-        .on('error', function (e) {
-          this.emit('end');
-        })
+        .on('error', function (e) { this.emit('end'); })
+        .on('end', () => { res(); })
         .pipe(plumber())
         .pipe(gulp.dest('./dist/bundles/'));
     }
-    res();
   });
 });
 
 gulp.task('pug_compile', () => {
   return new Promise((res) => {
     gulp.src(['./src/**/*.pug', '!./pug/**/_*.pug'])
+      .on('end', () => { res(); })
       .pipe(plumber())
       .pipe(pug({
         pretty: true
       }))
       .pipe(gulp.dest('./dist'));
-    res();
   });
 });
 
 gulp.task('asset_copy', () => {
   return new Promise((res) => {
     for(var i = 0; i < copyChain.length; i++){
-      gulp.src(copyChain[i].src)
-        .pipe(gulp.dest(copyChain[i].dest)); 
+      if(i == (copyChain.length - 1)){
+        gulp.src(copyChain[i].src)
+          .on('end', () => { res(); })
+          .pipe(gulp.dest(copyChain[i].dest));
+      }else{
+        gulp.src(copyChain[i].src)
+          .pipe(gulp.dest(copyChain[i].dest));
+      }
     }
-    res();
   });
 });
 
