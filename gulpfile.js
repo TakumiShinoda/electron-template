@@ -48,12 +48,17 @@ gulp.task('asset_copy', () => {
   });
 });
 
+gulp.task('restart', () => {
+  return new Promise((res) => {
+    electron.restart();
+    res();
+  })
+})
+
 gulp.task('watcher', () => {
   new Promise((res) => {
-    gulp.watch('./src/**', gulp.parallel('pug_compile', 'asset_copy', 'make_bundle'));
-    gulp.watch('./src/app/main.js', () => {
-      electron.restart();
-    });
+    gulp.watch(['./src/**', '!./src/app/main.js'], gulp.parallel('pug_compile', 'asset_copy', 'make_bundle'));
+    gulp.watch('./src/app/main.js', gulp.series('restart'));
     electron.start();
     res();
   });

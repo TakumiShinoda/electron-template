@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  nodeModule: `${__dirname}../node_modules`,
   srcPath: {
     js: (file) => {
       // return path.resolve(__dirname, '../src/assets/javascript') + file;

@@ -39,6 +39,7 @@
     "electron": "^27.1.0",
     "electron-connect": "^0.6.3",
     "electron-packager": "^17.1.2",
+    "electron-reload": "^2.0.0-alpha.1",
     "fs": "0.0.1-security",
     "glob-stream": "^7.0.0",
     "gulp": "^4.0.2",

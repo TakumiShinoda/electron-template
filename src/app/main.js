@@ -1,4 +1,6 @@
 const {app, BrowserWindow} = require('electron');
+const electronReload = require('electron-reload')('./dist/');
+
 const {distPath} = require('../../dev/path');
 
 app.on('ready', () => {
