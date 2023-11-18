@@ -4,8 +4,6 @@ import Test from './module'
 
 import '../../css/index/styles.css'
 
-const {distPath, srcPath} = require('../../../../dev/path.js')
-
 $(document).ready(() => {
   let webviewExm1: any = $('#webviewExm1')[0]; 
   let module: Test = new Test() 
