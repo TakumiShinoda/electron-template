@@ -9,6 +9,9 @@ app.on('ready', () => {
     height: 480,
     resizable: true,
     movable: true,
+    'webPreferences': {
+      'webviewTag': true
+    }
     // transparent: true,
     // titleBarStyle: 'hidden',
     // frame: false,
