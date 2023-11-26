@@ -3,8 +3,18 @@ html(lang='ja')
     include ../_header.pug
     script(src='../../bundles/index.js')
   body
-    div.container
-      h1 Electron Template
-      hr
-      h2 Webview
+    h1 Electron Template
+    hr
+    h2 Webview
+    div.flex.flex-align-start
       webview#webviewExm1.nodragmovable(src="https://www.google.com", preload="../../js/index/webviewResources/webviewExm1/domReady.js")
+      div#openDevToolButton.btn.btn-primary Open Dev Tool
+    h2(style='margin-top: 30px;') Modal
+    div.btn.btn-success(data-toggle="modal", data-target="#modal") Open by BS
+    div#openModalButton.btn.btn-primary Open by js
+    h2(style='margin-top: 30px;') IPC Communication
+    div#onewayIpcButton.btn.btn-primary Oneway
+    div(style='margin-top: 10px;').flex.flex-align-center
+      div#withRespIpcButton.btn.btn-primary With Response
+      input#directoryInput.form-control
+    include ./modal.pug
