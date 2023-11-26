@@ -1,5 +1,3 @@
-import $ = require('jquery')
-
 import Test from './module'
 
 import '../../css/index/styles.css'
