@@ -1,18 +1,16 @@
 {
   "name": "electron-template",
   "version": "1.0.0",
-  "nodeVersion": "15.14.0",
+  "nodeVersion": "20.10.0",
   "description": "",
   "main": "./src/app/main.js",
   "scripts": {
     "start": "gulp start",
-    "clean": "rm -R ./dist/",
-    "clean-start": "npm run clean || npm start && npm start",
-    "compile-pug": "gulp pug_compile",
-    "dist": "rm -R dist || gulp build_dist && gulp build_dist",
-    "test-pack-darwinx64": "rm -R *darwin-x64* || node build/darwinx64.js && node build/darwinx64.js",
-    "devenv-reset": "rm -r node_modules && rm package-lock.json",
-    "devenv-rebuild": "npm run devenv-reset & npm i"
+    "clean-start": "npm run devenv-rebuild && npm run clean-dist & npm start",
+    "clean-dist": "rm -R ./dist",
+    "clean-devenv": "rm -R node_modules & rm package-lock.json & rm yarn.lock",
+    "devenv-rebuild": "npm run clean-devenv & yarn",
+    "test-pack-darwinx64": "rm -R *darwin-x64* || node build/darwinx64.js && node build/darwinx64.js"
   },
   "author": "",
   "license": "ISC",
