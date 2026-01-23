@@ -9,8 +9,7 @@
     "clean-start": "npm run devenv-rebuild && npm run clean-dist & npm start",
     "clean-dist": "rm -R ./dist",
     "clean-devenv": "rm -R node_modules & rm package-lock.json & rm yarn.lock",
-    "devenv-rebuild": "npm run clean-devenv & yarn",
-    "test-pack-darwinx64": "rm -R *darwin-x64* || node build/darwinx64.js && node build/darwinx64.js"
+    "devenv-rebuild": "npm run clean-devenv && yarn"
   },
   "author": "",
   "license": "ISC",
@@ -36,7 +35,6 @@
     "css-loader": "^6.8.1",
     "electron": "^27.1.0",
     "electron-connect": "^0.6.3",
-    "electron-packager": "^17.1.2",
     "electron-reload": "^2.0.0-alpha.1",
     "fs": "0.0.1-security",
     "glob-stream": "^7.0.0",
