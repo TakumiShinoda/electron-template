@@ -1,7 +1,8 @@
 const {app, BrowserWindow, ipcMain, dialog} = require('electron');
-// const electronReload = require('electron-reload')('./dist/');
 
 const {distPath} = require('../../dev/path');
+
+require('electron-reload')(['./dist/views/**'])
 
 app.on('ready', () => {
   mainWindow = new BrowserWindow({

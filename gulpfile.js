@@ -2,34 +2,48 @@ const gulp = require('gulp')
 const pug = require('gulp-pug')
 const electron = require('electron-connect').server.create()
 const webpack = require('webpack')
-const webpackStream = require('webpack-stream')
 const plumber = require('gulp-plumber')
 const webpackConfig = require('./dev/webpack.config.js')
 const {copyChain, routes} = require('./dev/gulpChain.json')
 
-gulp.task('make_bundle', () => {
-  return new Promise((mainRes, mainRej) => {
-    let tasks = []
-    let configBuff
-
-    for(let rt of routes){
-      configBuff = webpackConfig.config(rt)
-
-      tasks.push(new Promise((subRes, subRej) => {
-        try{
-          gulp.src(configBuff.entry)
-            .pipe(plumber({errorHandler: function(err) {this.emit('end')}}))
-            .pipe(webpackStream(configBuff, webpack))
-            .pipe(gulp.dest('./dist/bundles/'))
-            .on('error', function (err) {this.emit('end')})
-            .on('end', () => {subRes()})
-        }catch(err){subRej(err)}
-      }))
+function webpackBuildTask(config){
+  return new Promise((res, rej) => {
+    const StatsLogOption = {
+      colors: true,
+      modules: false,
+      children: false,
+      chunks: false,
+      chunkModules: false,
+      assets: true
     }
 
-    Promise.all(tasks)
-      .then(() => {mainRes()})
-      .catch((err) => {mainRej(err)})
+    try{
+      webpack(config, (err, stats) => {
+        if(err || stats.hasErrors()) throw(err || stats.toJson().errors)
+        else{
+          console.log(stats.toString(StatsLogOption))
+          res()
+        }
+      })
+    }catch(err){rej(err)}
+  })
+}
+
+gulp.task('make_bundle', () => {
+  return new Promise(async (res, rej) => {
+    let buildTasks = []
+    let configBuff
+
+    try{
+      for(let rt of routes){
+        configBuff = webpackConfig.config(rt)
+
+        buildTasks.push(webpackBuildTask(configBuff))
+      }
+
+      await Promise.all(buildTasks)
+      res()
+    }catch(err){rej(err)}
   })
 })
 
@@ -72,12 +86,12 @@ gulp.task('restart', () => {
 
 gulp.task('watcher', () => {
   new Promise((res) => {
-    gulp.watch(['./src/**', '!./src/app/main.js'], gulp.parallel('pug_compile', 'asset_copy', 'make_bundle'))
+    gulp.watch(['./src/**', '!./src/app/**'], gulp.series('dist'))
     gulp.watch('./src/app/**', gulp.series('restart'))
     electron.start()
     res()
   })
 })
 
-gulp.task('start', gulp.series('asset_copy', 'pug_compile', 'make_bundle', 'watcher'))
 gulp.task('dist', gulp.parallel('asset_copy', 'pug_compile', 'make_bundle'))
+gulp.task('start', gulp.series('dist', 'watcher'))

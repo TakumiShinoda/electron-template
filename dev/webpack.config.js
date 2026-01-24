@@ -6,7 +6,8 @@ module.exports = {
       mode: 'development',
       entry: './src/assets/typescript/index/index.ts',
       output: {
-        filename: routes + ".js"
+        path: distPath.bundle('/'),
+        filename: `${routes}.js`
       },
       module: {
         rules: [

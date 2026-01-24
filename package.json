@@ -31,10 +31,10 @@
     "style-loader": "4.0.0",
     "ts-loader": "9.5.4",
     "typescript": "5.9.3",
-    "webpack": "5.104.1",
-    "webpack-stream": "7.0.0"
+    "webpack": "5.104.1"
   },
   "dependencies": {
+    "electron-reload": "2.0.0-alpha.1",
     "fs": "0.0.1-security",
     "graceful-fs": "4.2.10",
     "jquery": "3.3.1",
