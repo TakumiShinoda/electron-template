@@ -7,8 +7,8 @@
   "scripts": {
     "start": "gulp start",
     "clean-start": "npm run devenv-rebuild && npm run clean-dist & npm start",
-    "clean-dist": "rm -R ./dist",
-    "clean-devenv": "rm -R node_modules & rm package-lock.json & rm yarn.lock",
+    "clean-dist": "rmdir /s /q dist",
+    "clean-devenv": "rmdir /s /q node_modules & del package-lock.json & del yarn.lock",
     "devenv-rebuild": "npm run clean-devenv && yarn"
   },
   "author": "",
