@@ -2,7 +2,7 @@ const {app, BrowserWindow, ipcMain, dialog} = require('electron');
 
 const {distPath} = require('../../dev/path');
 
-require('electron-reload')(['./dist/views/**'])
+if(!app.isPackaged) require('electron-reload')(['./dist/views/**'])
 
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
@@ -30,5 +30,8 @@ app.on('ready', () => {
 
   mainWindow.on('closed', () => {
     mainWindow = null;
+    
+    console.log('exitApp')
+    process.exit(0)
   });
 });
