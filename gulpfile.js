@@ -3,10 +3,10 @@ const pug = require('gulp-pug')
 const electron = require('electron-connect').server.create()
 const webpack = require('webpack')
 const plumber = require('gulp-plumber')
-const webpackConfigMain = require('./dev/webpack.config.main.js')
-const webpackConfigPreload = require('./dev/webpack.config.preload.js')
-const webpackConfigRenderer = require('./dev/webpack.config.renderer.js')
-const {copyChain, routes} = require('./dev/gulpChain.json')
+const webpackConfigMain = require('./build/webpack.config.main.js')
+const webpackConfigPreload = require('./build/webpack.config.preload.js')
+const webpackConfigRenderer = require('./build/webpack.config.renderer.js')
+const {copyChain, routes} = require('./build/gulpChain.json')
 
 function webpackBuildTask(config){
   return new Promise((res, rej) => {

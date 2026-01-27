@@ -1,4 +1,4 @@
-const {distPath} = require('./devPath')
+const {distPath} = require('../dev/devPath')
 
 module.exports = {
   config: (routes) => {
