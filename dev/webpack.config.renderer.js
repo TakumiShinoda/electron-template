@@ -1,10 +1,11 @@
-const {srcPath, distPath} = require('./path');
+const {distPath} = require('./devPath')
 
 module.exports = {
   config: (routes) => {
     return {
       mode: 'development',
-      entry: './src/assets/typescript/index/index.ts',
+      target: 'electron-renderer',
+      entry: `./src/assets/typescript/${routes}/index.ts`,
       output: {
         path: distPath.bundle('/'),
         filename: `${routes}.js`
@@ -28,7 +29,12 @@ module.exports = {
           },
           {
             test: /\.ts$/,
-            use: 'ts-loader'
+            use: {
+              loader: 'ts-loader',
+              options: {
+                configFile: `${__dirname}/tsconfig.renderer.json`
+              }
+            }
           }
         ]
       },
@@ -39,6 +45,6 @@ module.exports = {
       resolve: {
         extensions: [".ts", ".tsx", ".js"]
       }
-    };
+    }
   }
 }

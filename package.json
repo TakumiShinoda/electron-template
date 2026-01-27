@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "nodeVersion": "20.10.0",
   "description": "",
-  "main": "./src/app/main.js",
+  "main": "./dist/app/main.js",
   "scripts": {
     "start": "gulp start",
     "clean-start": "npm run reset-dev && npm start",
@@ -14,7 +14,7 @@
     "reset-env": "npm run clean-env && yarn",
     "reset-dist": "npm run clean-dist && npm run dist",
     "reset-build": "npm run reset-env && npm run reset-dist && npm run clean-build",
-    "dist": "gulp dist",
+    "dist": "gulp make_main && gulp dist",
     "build-win": "npm run reset-build && electron-builder --win"
   },
   "author": "",
@@ -47,10 +47,7 @@
     "productName": "electron-template",
     "appId": "app.electron-template",
     "files": [
-      "./src/app/**",
-      "./node_modules/**",
-      "./dist/**",
-      "./dev/**"
+      "./dist/**"
     ],
     "win": {
       "target": [

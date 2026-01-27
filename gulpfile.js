@@ -3,7 +3,9 @@ const pug = require('gulp-pug')
 const electron = require('electron-connect').server.create()
 const webpack = require('webpack')
 const plumber = require('gulp-plumber')
-const webpackConfig = require('./dev/webpack.config.js')
+const webpackConfigMain = require('./dev/webpack.config.main.js')
+const webpackConfigPreload = require('./dev/webpack.config.preload.js')
+const webpackConfigRenderer = require('./dev/webpack.config.renderer.js')
 const {copyChain, routes} = require('./dev/gulpChain.json')
 
 function webpackBuildTask(config){
@@ -29,16 +31,23 @@ function webpackBuildTask(config){
   })
 }
 
+gulp.task('make_main', () => {
+  return new Promise(async (res, rej) => {
+    try{
+      await webpackBuildTask(webpackConfigMain)
+      res()
+    }catch(err){rej(err)}
+  })
+})
+
 gulp.task('make_bundle', () => {
   return new Promise(async (res, rej) => {
     let buildTasks = []
-    let configBuff
 
     try{
       for(let rt of routes){
-        configBuff = webpackConfig.config(rt)
-
-        buildTasks.push(webpackBuildTask(configBuff))
+        buildTasks.push(webpackBuildTask(webpackConfigPreload.config(rt)))
+        buildTasks.push(webpackBuildTask(webpackConfigRenderer.config(rt)))
       }
 
       await Promise.all(buildTasks)
@@ -87,11 +96,11 @@ gulp.task('restart', () => {
 gulp.task('watcher', () => {
   new Promise((res) => {
     gulp.watch(['./src/**', '!./src/app/**'], gulp.series('dist'))
-    gulp.watch('./src/app/**', gulp.series('restart'))
-    electron.start()
+    gulp.watch('./src/app/**', gulp.series('make_main', 'restart'))
+    electron.start('./dev/devStart.js')
     res()
   })
 })
 
 gulp.task('dist', gulp.parallel('asset_copy', 'pug_compile', 'make_bundle'))
-gulp.task('start', gulp.series('dist', 'watcher'))
+gulp.task('start', gulp.series('make_main', 'dist', 'watcher'))
