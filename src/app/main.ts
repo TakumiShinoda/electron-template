@@ -14,12 +14,18 @@ app.on('ready', () => {
     webPreferences: {
       webviewTag: true,
       preload: distPath.preload('/index.js'),
-    }
-    // transparent: true,
-    // titleBarStyle: 'hidden',
-    // frame: false,
+    },
+    show: false
   })
   mainWindow.loadURL(`${distPath.views('/index/index.html')}`)
+
+  mainWindow.once('ready-to-show', () => {
+    setTimeout(() => {
+      if(mainWindow == undefined) return
+
+      mainWindow.show()
+    }, 1000)
+  })
 
   ipcMain.on('openDialog', async () => {
     if(mainWindow == undefined) return
