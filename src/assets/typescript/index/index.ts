@@ -1,3 +1,6 @@
+import 'bootstrap'
+import $ from 'jquery'
+
 import '../../css/index/styles.css'
 
 $(function (){

@@ -20,7 +20,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/jquery": "3.3.14",
+    "@popperjs/core": "2.11.8",
+    "@types/jquery": "3.5.33",
     "@types/node": "20.10.0",
     "css-loader": "7.1.2",
     "electron": "40.0.0",
@@ -31,14 +32,19 @@
     "gulp-plumber": "1.2.1",
     "gulp-pug": "5.0.0",
     "lodash": "4.17.21",
+    "postcss": "8.5.6",
+    "postcss-loader": "8.2.0",
+    "sass": "1.79.6",
+    "sass-loader": "16.0.6",
     "style-loader": "4.0.0",
     "ts-loader": "9.5.4",
     "typescript": "5.9.3",
     "webpack": "5.104.1"
   },
   "dependencies": {
+    "bootstrap": "5.3.8",
     "graceful-fs": "4.2.10",
-    "jquery": "3.3.1"
+    "jquery": "4.0.0"
   },
   "build": {
     "directories": {

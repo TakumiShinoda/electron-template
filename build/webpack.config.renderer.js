@@ -13,7 +13,7 @@ module.exports = {
       module: {
         rules: [
           {
-            test: /\.css/,
+            test: /\.(css|s[ac]ss)$/i,
             use: [
               {
                 loader: 'style-loader'
@@ -23,8 +23,27 @@ module.exports = {
                 options: {
                   url: false,
                   sourceMap: true,
+                  importLoaders: 2
                 },
               },
+              {
+                loader: 'postcss-loader',
+                options: {
+                  sourceMap: true
+                }
+              },
+              {
+                loader: 'sass-loader',
+                options: {
+                  implementation: require('sass'),
+                  sourceMap: true,
+                  sassOptions: {
+                    silenceDeprecations: [
+                      'color-functions'
+                    ]
+                  }
+                }
+              }
             ],
           },
           {
