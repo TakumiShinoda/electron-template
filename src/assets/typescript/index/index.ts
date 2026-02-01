@@ -17,22 +17,27 @@ $(function (){
   })
 
   $('#onewayIpcButton').on('click', () => {
-    (window as any).electronAPI.openDialog()
+    window.electronApi.openDialog({message: 'Dialog by preload process.'})
   })
 
   $('#withRespIpcButton').on('click', async () => {
-    let dialogFilter: {extensions: string[], name: string}[] = [
+    let dialogFilter: Electron.FileFilter[] = [
       {
         extensions: ['*jpg'], 
         name: 'JPEG'
       }
     ]
-    let windowAsAny: any = window as any
-    let paths: string
+    let paths: string[] | undefined
     
     try{
-      paths = await windowAsAny.electronAPI.openFileDialog(dialogFilter)
-      console.log(paths[0])
+      paths = await window.electronApi.openFileDialog(dialogFilter)
+
+      if(paths == undefined){
+        console.log('CANCEL')
+        
+        return
+      }
+      
       $('#directoryInput').val(paths[0])
     }catch(err){
       console.log(err)

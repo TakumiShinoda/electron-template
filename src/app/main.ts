@@ -1,7 +1,7 @@
-import {app, BrowserWindow, ipcMain, dialog, FileFilter} from 'electron'
-import path from 'path'
+import {app, BrowserWindow, ipcMain} from 'electron'
 
 import {distPath} from '../../dev/devPath'
+import { openDialog, openFileDialog } from './ipcMain/dialogs'
 
 let mainWindow: BrowserWindow | undefined = undefined
 
@@ -27,17 +27,8 @@ app.on('ready', () => {
     }, 1000)
   })
 
-  ipcMain.on('openDialog', async () => {
-    if(mainWindow == undefined) return
-
-    dialog.showMessageBox(mainWindow, {message: 'Dialog by main process.'})
-  })
-
-  ipcMain.handle('openFileDialog', async (_, filters: FileFilter[]) => {
-    if(mainWindow == undefined) return
-
-    return await dialog.showOpenDialogSync(mainWindow, { filters: filters, properties: ['openFile'] })
-  })
+  ipcMain.handle('openFileDialog', openFileDialog)
+  ipcMain.on('openDialog', openDialog)
 
   mainWindow.on('closed', () => {
     mainWindow = undefined
