@@ -6,7 +6,8 @@
   "main": "./dist/app/main.js",
   "scripts": {
     "start": "gulp start",
-    "clean-start": "npm run reset-dev && npm start",
+    "clean-start": "npm run clean-dist && npm start",
+    "reset-start": "npm run reset-dev && npm start",
     "clean-env": "rmdir /s /q node_modules & del package-lock.json & del yarn.lock",
     "clean-dist": "rmdir /s /q dist",
     "clean-build": "rmdir /s /q publish",
@@ -21,6 +22,7 @@
   "license": "ISC",
   "devDependencies": {
     "@popperjs/core": "2.11.8",
+    "@types/bootstrap": "5.2.10",
     "@types/jquery": "3.5.33",
     "@types/node": "20.10.0",
     "css-loader": "7.1.2",

@@ -1,11 +1,11 @@
 import 'bootstrap'
 import $ from 'jquery'
 
+import '../builtin/testModal'
 import '../../css/index/styles.css'
 
 $(function (){
   let webviewExm1: HTMLElement | any = $('#webviewExm1')[0]
-  let modal: any = $('#modal')
 
   webviewExm1.addEventListener('dom-ready', () => {
     $('#openDevToolButton').on('click', () => {webviewExm1.openDevTools()})
@@ -13,10 +13,6 @@ $(function (){
 
   addEventListener('beforeunload', () => {
     webviewExm1.closeDevTools()
-  })
-
-  $('#openModalButton').on('click', () => {
-    modal.modal('show')
   })
 
   $('#onewayIpcButton').on('click', () => {
