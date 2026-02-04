@@ -1,12 +1,13 @@
 @import '~bootstrap/scss/bootstrap.scss';
 
+@import '../colors.css';
+@import '../builtin/common.css';
+
 body{
-  -webkit-user-select: none;
-  -webkit-app-region: drag;
-  background: #181818;
+  background: var(--windowThemeColor);
   color: #d7d7d7;
-  margin-top: 20px;
-  padding: 20px;
+  margin: 0px;
+  padding: 0px;
 }
 
 hr{

@@ -1,6 +1,10 @@
 {
   "copyChain": [
     {
+      "src": "src/assets/images/**",
+      "dest": "./dist/images"
+    },
+    {
       "src": "src/assets/typescript/index/webviewResources/webviewExm1/domReady.js",
       "dest": "./dist/js/index/webviewResources/webviewExm1/"
     }

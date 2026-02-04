@@ -2,6 +2,7 @@ import {app, BrowserWindow, ipcMain} from 'electron'
 
 import {distPath} from '../../dev/devPath'
 import { openDialog, openFileDialog } from './ipcMain/dialogs'
+import { closeWindow, maximizeWindow, minimizeWindow } from './ipcMain/builtin/system'
 
 let mainWindow: BrowserWindow | undefined = undefined
 
@@ -15,6 +16,7 @@ app.on('ready', () => {
       webviewTag: true,
       preload: distPath.preload('/index.js'),
     },
+    frame: false,
     show: false
   })
   mainWindow.loadURL(`${distPath.views('/index/index.html')}`)
@@ -29,6 +31,9 @@ app.on('ready', () => {
 
   ipcMain.handle('openFileDialog', openFileDialog)
   ipcMain.on('openDialog', openDialog)
+  ipcMain.on('maximizeWindow', maximizeWindow)
+  ipcMain.on('minimizeWindow', minimizeWindow)
+  ipcMain.on('closeWindow', closeWindow)
 
   mainWindow.on('closed', () => {
     mainWindow = undefined

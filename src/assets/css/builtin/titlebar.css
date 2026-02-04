@@ -1,0 +1,54 @@
+@import '../colors.css';
+@import './common.css';
+
+:root{
+  --titlebarHeight: 40px;
+  --titlebarWindowControlAreaWidth: 100px;
+  --titlebarWindowControlButtonWidth: 60px;
+  --titlebarWindowCloseButtonHoverBackgroundColor: red;
+}
+
+#titlebarArea{
+  display: flex;
+  height: var(--titlebarHeight);
+  border: 1px solid var(--windowThemeColorBorder);
+}
+
+#titlebarUtilityArea{
+  display: flex;
+  align-items: center;
+  width: calc(100% - var(--titlebarWindowControlAreaWidth));
+}
+
+#titlebarAppIcon{
+  margin-left: var(--contentSpanNarrow);
+}
+
+#titlebarTitle{
+  margin-left: var(--contentSpanNormal);
+}
+
+#titlebarWindowControlArea{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: var(--titlebarWindowControlAreaWidth);
+}
+
+.titlebarWindowControlButton{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--titlebarWindowControlButtonWidth);
+  height: 100%;
+}
+
+#titlebarWindowMinimizeButton:hover{
+  background-color: var(--windowThemeColorBorder);
+  transition: var(--transitionFastDuration);
+}
+
+#titlebarWindowCloseButton:hover{
+  background-color: var(--titlebarWindowCloseButtonHoverBackgroundColor);
+  transition: var(--transitionFastDuration);
+}

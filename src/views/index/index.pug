@@ -2,17 +2,17 @@ html(lang='ja')
   head
     include ../_header.pug
     script(src='../../bundles/index.js')
-  body
-    h1 Electron Template
-    hr
-    h2 Webview
-    div.flex.flex-align-start
-      webview#webviewExm1.nodragmovable(src="https://www.google.com" preload="../../js/index/webviewResources/webviewExm1/domReady.js")
-      div#openDevToolButton.btn.btn-primary Open Dev Tool
-    h2(style='margin-top: 30px;') Modal
-    include ../builtin/testModal.pug
-    h2(style='margin-top: 30px;') IPC Communication
-    div#onewayIpcButton.btn.btn-primary Oneway
-    div(style='margin-top: 10px;').flex.flex-align-center
-      div#withRespIpcButton.btn.btn-primary With Response
-      input#directoryInput.form-control
+  body.textUnSelectable
+    include ../builtin/titlebar.pug
+    div#contentsArea
+      h2 Webview
+      div.flex.flex-align-start
+        webview#webviewExm1.nodragmovable(src="https://www.google.com" preload="../../js/index/webviewResources/webviewExm1/domReady.js")
+        div#openDevToolButton.btn.btn-primary Open Dev Tool
+      h2(style='margin-top: 30px;') Modal
+      include ../builtin/testModal.pug
+      h2(style='margin-top: 30px;') IPC Communication
+      div#onewayIpcButton.btn.btn-primary Oneway
+      div(style='margin-top: 10px;').flex.flex-align-center
+        div#withRespIpcButton.btn.btn-primary With Response
+        input#directoryInput.form-control

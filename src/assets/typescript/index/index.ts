@@ -1,6 +1,7 @@
 import 'bootstrap'
 import $ from 'jquery'
 
+import '../builtin/titlebar'
 import '../builtin/testModal'
 import '../../css/index/styles.css'
 

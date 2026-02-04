@@ -1,0 +1,16 @@
+:root{
+  --transitionNormalDuration: 0.8s;
+  --transitionSlowDuration: 1.3s;
+  --transitionFastDuration: 0.3s;
+  --contentSpanNormal: 10px;
+  --contentSpanNarrow: 5px;
+  --contentSpanFar: 15px;
+}
+
+.windowDraggable{
+  -webkit-app-region: drag;
+}
+
+.textUnSelectable{
+  -webkit-user-select: none;
+}
