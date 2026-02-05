@@ -2,6 +2,14 @@
 
 @import '../colors.css';
 @import '../builtin/common.css';
+@import '../builtin/titlebar.css';
+
+:root{
+  --contentAreaWidth: 100%;
+  --contentAreaHeight: calc(100% - var(--titlebarHeight));
+  --contentAreaMargin: 0px;
+  --contentAreaPadding: 0px;
+}
 
 body{
   background: var(--windowThemeColor);
@@ -10,30 +18,17 @@ body{
   padding: 0px;
 }
 
+#contentsArea{
+  display: flex;
+  width: var(--contentAreaWidth);
+  height: var(--contentAreaHeight);
+  margin: var(--contentAreaMargin);
+  padding: var(--contentAreaPadding);
+}
+
 hr{
   background-color: #4b4b4b;
 }
-
-.dragmovable{
-  -webkit-app-region: drag;
-}
-
-.nodragmovable{
-  -webkit-app-region: no-drag;
-}
-
-.flex{
-  display: flex;
-}
-
-.flex-align-start{
-  align-items: start;
-}
-
-.flex-align-center{
-  align-items: center;
-}
-
 
 #webviewExm1{
   background: rgb(255, 255, 255);

@@ -5,14 +5,16 @@ html(lang='ja')
   body.textUnSelectable
     include ../builtin/titlebar.pug
     div#contentsArea
-      h2 Webview
-      div.flex.flex-align-start
-        webview#webviewExm1.nodragmovable(src="https://www.google.com" preload="../../js/index/webviewResources/webviewExm1/domReady.js")
-        div#openDevToolButton.btn.btn-primary Open Dev Tool
-      h2(style='margin-top: 30px;') Modal
-      include ../builtin/testModal.pug
-      h2(style='margin-top: 30px;') IPC Communication
-      div#onewayIpcButton.btn.btn-primary Oneway
-      div(style='margin-top: 10px;').flex.flex-align-center
-        div#withRespIpcButton.btn.btn-primary With Response
-        input#directoryInput.form-control
+      include ../builtin/sidemenu.pug
+      div#mainContentsArea
+        h2 Webview
+        div.flex.flex-align-start
+          webview#webviewExm1.nodragmovable(src="https://www.google.com" preload="../../js/index/webviewResources/webviewExm1/domReady.js")
+          div#openDevToolButton.btn.btn-primary Open Dev Tool
+        h2(style='margin-top: 30px;') Modal
+        include ../builtin/testModal.pug
+        h2(style='margin-top: 30px;') IPC Communication
+        div#onewayIpcButton.btn.btn-primary Oneway
+        div(style='margin-top: 10px;').flex.flex-align-center
+          div#withRespIpcButton.btn.btn-primary With Response
+          input#directoryInput.form-control

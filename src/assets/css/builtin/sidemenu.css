@@ -1,0 +1,32 @@
+@import '../colors.css';
+
+:root{
+  --sidemenuWidth: 60px;
+  --sidemenuHeight: 100%;
+  --sidemenuButtonWidth: 100%;
+  --sidemenuButtonHeight: 50px;
+  --sidemenuButtonRatio: 0.7;
+}
+
+#sidemenuArea{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: var(--sidemenuWidth);
+  height: var(--sidemenuHeight);
+  background-color: var(--windowThemeColorDark);
+}
+
+.sidemenuButton{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--sidemenuButtonWidth);
+  height: var(--sidemenuButtonHeight);
+  font-size: calc(var(--sidemenuButtonHeight) * var(--sidemenuButtonRatio));
+}
+
+.sidemenuButton:hover{
+  background-color: var(--windowThemeColorBorder);
+}
