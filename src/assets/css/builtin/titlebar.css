@@ -1,6 +1,8 @@
 @import '../colors.css';
 @import './common.css';
 
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
 :root{
   --titlebarHeight: 40px;
   --titlebarWindowControlAreaWidth: 100px;

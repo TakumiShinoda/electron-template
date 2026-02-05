@@ -21,7 +21,7 @@ module.exports = {
               {
                 loader: 'css-loader',
                 options: {
-                  url: false,
+                  url: true,
                   sourceMap: true,
                   importLoaders: 2
                 },
@@ -53,6 +53,13 @@ module.exports = {
               options: {
                 configFile: `${__dirname}/tsconfig.renderer.json`
               }
+            }
+          },
+          {
+            test: /\.(woff2?|eot|ttf|otf)$/i,
+            type: 'asset/resource',
+            generator: {
+            filename: 'assets/[name][contenthash][ext][query]'
             }
           }
         ]
