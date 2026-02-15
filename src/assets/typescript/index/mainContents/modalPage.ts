@@ -1,5 +1,5 @@
-import {Modal} from 'bootstrap'
 import $ from 'jquery'
+import {Modal} from 'bootstrap'
 
 $(function (){
   $('#openTestModalButtonByJs').on('click', () => {

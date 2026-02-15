@@ -3,11 +3,11 @@ import $ from 'jquery'
 
 import '../builtin/titlebar'
 import '../builtin/sidemenu'
-import '../builtin/testModal'
-import { SideMenu, SideMenuSetting } from '../builtin/sidemenu'
 import '../builtin/mainContents'
+import { SideMenu, SideMenuSetting } from '../builtin/sidemenu'
 
 import '../../css/index/styles.css'
+import './mainContents/modalPage'
 
 const SidemenuSettings: SideMenuSetting[] = [
   {
