@@ -3,6 +3,7 @@
 @import '../colors.css';
 @import '../builtin/common.css';
 @import '../builtin/titlebar.css';
+@import './mainContents/modalPage.css';
 
 :root{
   --contentAreaWidth: 100%;
@@ -43,4 +44,13 @@ hr{
 #directoryInput{
   margin-left: 10px;
   width: 100%;
+}
+
+.exampleContentArea{
+  display: flex;
+  border: 2px solid var(--windowThemeColorBorder);
+  border-radius: var(--borderRadiusNormal);
+  width: 100%;
+  padding: var(--contentPaddingNormal);
+  margin-bottom: var(--contentSpanNormal);
 }

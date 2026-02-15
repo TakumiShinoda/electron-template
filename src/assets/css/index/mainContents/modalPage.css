@@ -1,0 +1,35 @@
+:root{
+  --modalPageTitleAreaHeight: 50px;
+  --modalPageContentAreaHeight: calc(100% - var(--modalPageTitleAreaHeight));
+}
+
+div#modalPageTitleArea{
+  width: 100%;
+  height: var(--modalPageTitleAreaHeight);
+}
+
+#modalPageContentArea{
+  display: flex;
+  flex-direction: column; 
+  justify-content: start;
+  width: 100%;
+  height: var(--modalPageContentAreaHeight);
+}
+
+#testModalHeader{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+#testModalBody{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+#testModalFooter{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
