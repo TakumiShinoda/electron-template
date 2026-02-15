@@ -1,9 +1,11 @@
 import $ from 'jquery'
 import {Tooltip} from 'bootstrap'
 
+export type tooltipPlacement = 'top' | 'bottom' | 'left' | 'right'
+
 export interface toolTipSettings{
   selector: string,
-  placement: 'top' | 'bottom' | 'left' | 'right',
+  placement: tooltipPlacement,
   title: string
 }
 
@@ -19,8 +21,14 @@ export function applyTooltips(setting: toolTipSettings[]){
     jqueryElementBuff.attr('data-bs-placement', s.placement)
     jqueryElementBuff.attr('data-bs-title', s.title)
   }
+
+  $('[data-bs-toggle="tooltip"]').get().map(el => {
+    if($(el).prop('applyedTooltip')) return
+
+    $(el).prop('applyedTooltip', true)
+    new Tooltip(el)
+  })
 }
 
 $(window).on('load', () => {
-  $('[data-bs-toggle="tooltip"]').get().map(el => new Tooltip(el))
 })

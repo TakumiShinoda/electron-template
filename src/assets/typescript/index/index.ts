@@ -5,6 +5,53 @@ import '../builtin/titlebar'
 import '../builtin/sidemenu'
 import '../builtin/testModal'
 import '../../css/index/styles.css'
+import { SideMenu, SideMenuSetting } from '../builtin/sidemenu'
+
+const SidemenuSettings: SideMenuSetting[] = [
+  {
+    id: 'sidemenuHomeButton',
+    toolTipSetting: {
+      selector: '',
+      placement: 'right',
+      title: 'Home'
+    },
+    selected: true,
+    contents: `<i class='bi bi-house-door-fill'></i>`,
+    onClick: () => {console.log('Home')}
+  },
+  {
+    id: 'sidemenuModalButton',
+    toolTipSetting: {
+      selector: '',
+      placement: 'right',
+      title: 'Modal'
+    },
+    contents: `<i class='bi bi-stack'></i>`,
+    onClick: () => {}
+  },
+  {
+    id: 'sidemenuIpcCommunicationButton',
+    toolTipSetting: {
+      selector: '',
+      placement: 'right',
+      title: 'IPC Communication'
+    },
+    contents: `<i class='bi bi-shuffle'></i>`,
+    onClick: () => {}
+  },
+  {
+    id: 'sidemenuInternalBrowserButton',
+    toolTipSetting: {
+      selector: '',
+      placement: 'right',
+      title: 'Internal Browser'
+    },
+    contents: `<i class='bi bi-browser-chrome'></i>`,
+    onClick: () => {}
+  }
+]
+
+window.sideMenu = new SideMenu(SidemenuSettings)
 
 $(function (){
   let webviewExm1: HTMLElement | any = $('#webviewExm1')[0]

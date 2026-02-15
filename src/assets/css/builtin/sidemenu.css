@@ -6,6 +6,7 @@
   --sidemenuButtonWidth: 100%;
   --sidemenuButtonHeight: 50px;
   --sidemenuButtonRatio: 0.7;
+  --sidemenuButtonSelectedColor: var(--windowThemeColorBorder);
 }
 
 #sidemenuArea{
@@ -28,5 +29,9 @@
 }
 
 .sidemenuButton:hover{
-  background-color: var(--windowThemeColorBorder);
+  background-color: var(--sidemenuButtonSelectedColor);
+}
+
+.sidemenuButtonSelected{
+  background-color: var(--sidemenuButtonSelectedColor);
 }
