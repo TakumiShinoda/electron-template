@@ -4,8 +4,10 @@ import $ from 'jquery'
 import '../builtin/titlebar'
 import '../builtin/sidemenu'
 import '../builtin/testModal'
-import '../../css/index/styles.css'
 import { SideMenu, SideMenuSetting } from '../builtin/sidemenu'
+import '../builtin/mainContents'
+
+import '../../css/index/styles.css'
 
 const SidemenuSettings: SideMenuSetting[] = [
   {
@@ -17,7 +19,7 @@ const SidemenuSettings: SideMenuSetting[] = [
     },
     selected: true,
     contents: `<i class='bi bi-house-door-fill'></i>`,
-    onClick: () => {console.log('Home')}
+    onClick: () => {window.mainContent.show('homePage')}
   },
   {
     id: 'sidemenuModalButton',
@@ -27,7 +29,7 @@ const SidemenuSettings: SideMenuSetting[] = [
       title: 'Modal'
     },
     contents: `<i class='bi bi-stack'></i>`,
-    onClick: () => {}
+    onClick: () => {window.mainContent.show('modalPage')}
   },
   {
     id: 'sidemenuIpcCommunicationButton',
@@ -37,7 +39,7 @@ const SidemenuSettings: SideMenuSetting[] = [
       title: 'IPC Communication'
     },
     contents: `<i class='bi bi-shuffle'></i>`,
-    onClick: () => {}
+    onClick: () => {window.mainContent.show('ipcCommunicationPage')}
   },
   {
     id: 'sidemenuInternalBrowserButton',
@@ -47,7 +49,7 @@ const SidemenuSettings: SideMenuSetting[] = [
       title: 'Internal Browser'
     },
     contents: `<i class='bi bi-browser-chrome'></i>`,
-    onClick: () => {}
+    onClick: () => {window.mainContent.show('internalBrowserPage')}
   }
 ]
 
