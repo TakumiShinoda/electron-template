@@ -1,5 +1,5 @@
 :root{
-  --mainContentsAreaWidth: 100%;
+  --mainContentsAreaWidth: calc(100% - var(--sidemenuWidth) - (var(--mainContentsAreaMargin) * 2));
   --mainContentsAreaHeight: calc(100% - (var(--mainContentsAreaMargin) * 2));
   --mainContentsAreaMargin: 10px;
 }

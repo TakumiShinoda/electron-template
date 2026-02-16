@@ -1,3 +1,5 @@
+@import '../../builtin/shiki.css';
+
 :root{
   --modalPageTitleAreaHeight: 50px;
   --modalPageContentAreaHeight: calc(100% - var(--modalPageTitleAreaHeight));
@@ -14,6 +16,10 @@ div#modalPageTitleArea{
   justify-content: start;
   width: 100%;
   height: var(--modalPageContentAreaHeight);
+}
+
+#openTestModalButtonByBsCodeArea{
+  width: 100%;
 }
 
 #testModalHeader{

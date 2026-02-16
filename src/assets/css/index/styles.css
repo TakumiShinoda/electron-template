@@ -25,6 +25,7 @@ body{
   height: var(--contentAreaHeight);
   margin: var(--contentAreaMargin);
   padding: var(--contentAreaPadding);
+  overflow-x: hidden;
 }
 
 hr{
@@ -48,9 +49,19 @@ hr{
 
 .exampleContentArea{
   display: flex;
+  flex-direction: column;
   border: 2px solid var(--windowThemeColorBorder);
   border-radius: var(--borderRadiusNormal);
   width: 100%;
   padding: var(--contentPaddingNormal);
   margin-bottom: var(--contentSpanNormal);
+  overflow-x: hidden;
+}
+
+.exampleContentRow{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: var(--contentSpanNormal);
+  overflow-x: hidden;
 }

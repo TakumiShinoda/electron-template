@@ -1,0 +1,38 @@
+:root{
+  --shikiCodeLineNumberWidth: 30px;
+  --shikiCodeLineNumberColor: rgba(115, 138, 148);
+  --shikiCodeLineMarginLeft: -15px;
+  --shikiCodeLineMarginRight: var(--contentSpanNormal);
+}
+
+pre.shiki{
+  margin: 0px;
+}
+
+pre.shiki code {
+  counter-reset: line;
+  overflow-x: scroll;
+}
+
+pre.shiki code .line {
+  position: relative;
+  margin-left: var(--shikiCodeLineMarginLeft);
+  margin-right: var(--shikiCodeLineMarginRight);
+  white-space: pre;
+}
+
+pre.shiki code .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  position: sticky;
+  width: var(--shikiCodeLineNumberWidth);
+  padding: 5px;
+  margin: 0px;
+  left: 0;
+  text-align: right;
+  border-right: 1px solid var(--shikiCodeLineNumberColor);
+  color: var(--shikiCodeLineNumberColor);
+  background-color: var(--windowThemeColorDark);
+  user-select: none;
+}
