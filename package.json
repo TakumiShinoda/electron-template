@@ -48,7 +48,8 @@
     "bootstrap-icons": "1.13.1",
     "graceful-fs": "4.2.10",
     "jquery": "4.0.0",
-    "shiki": "3.22.0"
+    "shiki": "3.22.0",
+    "ts-dedent": "2.2.0"
   },
   "build": {
     "directories": {

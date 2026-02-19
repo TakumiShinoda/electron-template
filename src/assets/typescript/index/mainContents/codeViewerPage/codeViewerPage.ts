@@ -1,6 +1,6 @@
 import $ from 'jquery'
 
-import '../../builtin/codeViewer'
+import '../../../builtin/codeViewer'
 
 $(async function (){
   let codeElementStr: string = await window.electronApi.shikiCodeToHtml(`

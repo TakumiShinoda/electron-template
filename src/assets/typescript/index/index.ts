@@ -7,8 +7,8 @@ import '../builtin/mainContents'
 import { SideMenu, SideMenuSetting } from '../builtin/sidemenu'
 
 import '../../css/index/styles.css'
-import './mainContents/modalPage'
-import './mainContents/codeViewerPage'
+import './mainContents/modalPage/modalPage'
+import './mainContents/codeViewerPage/codeViewerPage'
 
 const SidemenuSettings: SideMenuSetting[] = [
   {
