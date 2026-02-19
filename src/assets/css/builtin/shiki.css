@@ -1,7 +1,8 @@
 :root{
   --shikiCodeLineNumberWidth: 30px;
+  --shikiCodeLineNumberMarginRight: var(--contentPaddingNormal);
   --shikiCodeLineNumberColor: rgba(115, 138, 148);
-  --shikiCodeLineMarginLeft: -15px;
+  --shikiCodeLineMarginLeft: 0px;
   --shikiCodeLineMarginRight: var(--contentSpanNormal);
 }
 
@@ -28,7 +29,7 @@ pre.shiki code .line::before {
   position: sticky;
   width: var(--shikiCodeLineNumberWidth);
   padding: 5px;
-  margin: 0px;
+  margin-right: var(--shikiCodeLineNumberMarginRight);
   left: 0;
   text-align: right;
   border-right: 1px solid var(--shikiCodeLineNumberColor);

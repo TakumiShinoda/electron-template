@@ -1,0 +1,28 @@
+@import './shiki.css';
+
+:root{
+  --codeViewerCodeAreaMaxHeight: 200px;
+  --codeViewerCodeLineMarginLeft: var(--contentPaddingNormal);
+}
+
+.codeViewerSelectorArea{
+  display: flex;
+  padding: var(--contentPaddingNarrow);
+}
+
+.codeViewerTitle{
+  color: white;
+  margin-left: var(--contentSpanFar)
+}
+
+.codeViewerTitle:hover{
+  opacity: 0.5;
+  cursor: pointer;
+  transition: var(--transitionFastDuration);
+}
+
+.codeViewerCodeArea pre.shiki{
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: var(--codeViewerCodeAreaMaxHeight);
+}

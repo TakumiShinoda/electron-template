@@ -14,12 +14,86 @@
   --transitionNormalDuration: 0.8s;
   --transitionSlowDuration: 1.3s;
   --transitionFastDuration: 0.3s;
+
+  --scrollWidthNormal: 15px;
+  --scrollWidthNarrow: 10px;
+  --scrollWidthBold: 20px;
+  --scrollTrackColor: var(--windowThemeColorBorder);
+  --scrollThumbColor: var(--windowThemeColorDark);
 }
 
 .windowDraggable{
   -webkit-app-region: drag;
 }
 
+.textSelectable{
+  -webkit-user-select: text;
+}
+
 .textUnSelectable{
   -webkit-user-select: none;
+}
+
+.scrollBasicNormal{
+  &::-webkit-scrollbar {
+    width: var(--scrollWidthNormal);
+    height: var(--scrollWidthNormal);
+  }
+
+  &::-webkit-scrollbar-track{
+    background-color: var(--windowThemeColorBorder);
+    border-radius: var(--borderRadiusNormal);
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--windowThemeColorDark);
+    border-radius: var(--borderRadiusNormal);
+  }
+  
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+.scrollBasicNarrow{
+  &::-webkit-scrollbar {
+    width: var(--scrollWidthNarrow);
+    height: var(--scrollWidthNarrow);
+  }
+
+  &::-webkit-scrollbar-track{
+    background-color: var(--scrollTrackColor);
+    border-radius: var(--borderRadiusSharp);
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--scrollThumbColor);
+    opacity: 0.5;
+    border-radius: var(--borderRadiusSharp);
+  }
+  
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+.scrollBasicBold{
+  &::-webkit-scrollbar {
+    width: var(--scrollWidthBold);
+    height: var(--scrollWidthBold);
+  }
+
+  &::-webkit-scrollbar-track{
+    background-color: var(--scrollTrackColor);
+    border-radius: var(--borderRadiusRound);
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--scrollThumbColor);
+    border-radius: var(--borderRadiusRound);
+  }
+  
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
 }

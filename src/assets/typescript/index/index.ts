@@ -8,6 +8,7 @@ import { SideMenu, SideMenuSetting } from '../builtin/sidemenu'
 
 import '../../css/index/styles.css'
 import './mainContents/modalPage'
+import './mainContents/codeViewerPage'
 
 const SidemenuSettings: SideMenuSetting[] = [
   {
@@ -50,6 +51,16 @@ const SidemenuSettings: SideMenuSetting[] = [
     },
     contents: `<i class='bi bi-browser-chrome'></i>`,
     onClick: () => {window.mainContent.show('internalBrowserPage')}
+  },
+  {
+    id: 'sidemenuCodeViewerButton',
+    toolTipSetting: {
+      selector: '',
+      placement: 'right',
+      title: 'Code Viewer'
+    },
+    contents: `<i class='bi bi-code-square'></i>`,
+    onClick: () => {window.mainContent.show('codeViewerPage')}
   }
 ]
 
