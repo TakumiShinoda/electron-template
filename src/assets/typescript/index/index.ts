@@ -9,6 +9,7 @@ import { SideMenu, SideMenuSetting } from '../builtin/sidemenu'
 import '../../css/index/styles.css'
 import './mainContents/modalPage/modalPage'
 import './mainContents/ipcCommunicationPage/ipcCommunicationPage'
+import './mainContents/internalBrowserPage/internalBrowserPage'
 import './mainContents/codeViewerPage/codeViewerPage'
 
 const SidemenuSettings: SideMenuSetting[] = [
@@ -68,13 +69,4 @@ const SidemenuSettings: SideMenuSetting[] = [
 window.sideMenu = new SideMenu(SidemenuSettings)
 
 $(function (){
-  let webviewExm1: HTMLElement | any = $('#webviewExm1')[0]
-
-  webviewExm1.addEventListener('dom-ready', () => {
-    $('#openDevToolButton').on('click', () => {webviewExm1.openDevTools()})
-  })
-
-  addEventListener('beforeunload', () => {
-    webviewExm1.closeDevTools()
-  })
 })

@@ -31,16 +31,6 @@ hr{
   background-color: #4b4b4b;
 }
 
-#webviewExm1{
-  background: rgb(255, 255, 255);
-  width: 80%;
-  height: 200px;
-}
-
-#openDevToolButton{
-  margin-left: 20px;
-}
-
 #directoryInput{
   margin-left: 10px;
   width: 100%;

@@ -1,0 +1,33 @@
+:root{
+  --internalBrowserPageTitleAreaHeight: 50px;
+  --internalBrowserPageContentAreaHeight: calc(100% - var(--internalBrowserPageTitleAreaHeight));
+  --webviewHeight: 300px;
+}
+
+#internalBrowserPageTitleArea{
+  width: 100%;
+  height: var(--internalBrowserPageTitleAreaHeight);
+}
+
+#internalBrowserPageContentArea{
+  display: flex;
+  flex-direction: column; 
+  justify-content: start;
+  width: 100%;
+  height: var(--internalBrowserPageContentAreaHeight);
+  overflow-y: scroll;
+}
+
+#internalBrowserWebview{
+  background: rgb(255, 255, 255);
+  width: 100%;
+  height: var(--webviewHeight);
+}
+
+#internalBrowserWebviewCodeArea{
+  width: 100%;
+}
+
+#openDevToolButtonCodeArea{
+  width: 100%;
+}

@@ -1,5 +1,19 @@
 div.mainContent#internalBrowserPage
-  h2 Internal Browser
-  div.flex.flex-align-start
-    webview#webviewExm1.nodragmovable(src="https://www.google.com" preload="../../js/index/webviewResources/webviewExm1/domReady.js")
-    div#openDevToolButton.btn.btn-primary Open Dev Tool
+  div#internalBrowserPageTitleArea
+    h2 Internal Browser
+  div#internalBrowserPageContentArea.scrollBasicNormal
+    h5 Webview
+    div.exampleContentArea
+      div.exampleContentRow
+        webview#internalBrowserWebview(src="https://www.google.com" preload="../../js/index/webviewResources/webviewExm1/domReady.js")
+      div.exampleContentRow
+        div(data-bs-toggle='collapse' data-bs-target='#internalBrowserWebviewCodeArea') ▼ Code
+      div.exampleContentRow
+        div#internalBrowserWebviewCodeArea.collapse
+      h5 Development Tool
+      div.exampleContentRow
+        div#openDevToolButton.btn.btn-primary Open Dev Tool
+      div.exampleContentRow
+        div(data-bs-toggle='collapse' data-bs-target='#openDevToolButtonCodeArea') ▼ Code
+      div.exampleContentRow
+        div#openDevToolButtonCodeArea.collapse
