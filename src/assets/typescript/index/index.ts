@@ -8,6 +8,7 @@ import { SideMenu, SideMenuSetting } from '../builtin/sidemenu'
 
 import '../../css/index/styles.css'
 import './mainContents/modalPage/modalPage'
+import './mainContents/ipcCommunicationPage/ipcCommunicationPage'
 import './mainContents/codeViewerPage/codeViewerPage'
 
 const SidemenuSettings: SideMenuSetting[] = [
@@ -75,33 +76,5 @@ $(function (){
 
   addEventListener('beforeunload', () => {
     webviewExm1.closeDevTools()
-  })
-
-  $('#onewayIpcButton').on('click', () => {
-    window.electronApi.openDialog({message: 'Dialog by preload process.'})
-  })
-
-  $('#withRespIpcButton').on('click', async () => {
-    let dialogFilter: Electron.FileFilter[] = [
-      {
-        extensions: ['*jpg'], 
-        name: 'JPEG'
-      }
-    ]
-    let paths: string[] | undefined
-    
-    try{
-      paths = await window.electronApi.openFileDialog(dialogFilter)
-
-      if(paths == undefined){
-        console.log('CANCEL')
-        
-        return
-      }
-      
-      $('#directoryInput').val(paths[0])
-    }catch(err){
-      console.log(err)
-    }
   })
 })

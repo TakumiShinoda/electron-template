@@ -1,6 +1,22 @@
 div.mainContent#ipcCommunicationPage
-  h2 IPC Communication
-  div#onewayIpcButton.btn.btn-primary Oneway
-  div(style='margin-top: 10px;').flex.flex-align-center
-    div#withRespIpcButton.btn.btn-primary With Response
-    input#directoryInput.form-control
+  div#ipcCommunicationPageTitleArea
+    h2 IPC Communication
+  div#ipcCommunicationPageContentArea.scrollBasicNormal
+    h5 Oneway IPC
+    div.exampleContentArea
+      div.exampleContentRow
+        div#onewayIpcButton.btn.btn-primary Oneway
+      div.exampleContentRow
+        div(data-bs-toggle='collapse' data-bs-target='#onewayIpcCodeArea') ▼ Code
+      div.exampleContentRow
+        div#onewayIpcCodeArea.collapse
+    h5 With Response IPC
+    div.exampleContentArea
+      div.exampleContentRow
+        div#withRespIpcButton.btn.btn-primary With Response
+      div.exampleContentRow
+        input#directoryInput.form-control
+      div.exampleContentRow
+        div(data-bs-toggle='collapse' data-bs-target='#withRespIpcCodeArea') ▼ Code
+      div.exampleContentRow
+        div#withRespIpcCodeArea.collapse

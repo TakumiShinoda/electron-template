@@ -1,0 +1,26 @@
+:root{
+  --ipcCommunicationPageTitleAreaHeight: 50px;
+  --ipcCommunicationPageContentAreaHeight: calc(100% - var(--modalPageTitleAreaHeight));
+}
+
+#ipcCommunicationPageTitleArea{
+  width: 100%;
+  height: var(--ipcCommunicationPageTitleAreaHeight);
+}
+
+#ipcCommunicationPageContentArea{
+  display: flex;
+  flex-direction: column; 
+  justify-content: start;
+  width: 100%;
+  height: var(--ipcCommunicationPageContentAreaHeight);
+  overflow-y: scroll;
+}
+
+#onewayIpcCodeArea{
+  width: 100%;
+}
+
+#withRespIpcCodeArea{
+  width: 100%;
+}

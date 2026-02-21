@@ -1,7 +1,7 @@
 @import './shiki.css';
 
 :root{
-  --codeViewerCodeAreaMaxHeight: 200px;
+  --codeViewerCodeAreaMaxHeight: 400px;
   --codeViewerCodeLineMarginLeft: var(--contentPaddingNormal);
 }
 
