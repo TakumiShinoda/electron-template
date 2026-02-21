@@ -30,6 +30,10 @@ export class CodeViewer{
     this.create(selector)
   }
 
+  private generateCodeAreaId(uniqueStr: string): string{
+    return `codeArea_${uniqueStr}`
+  }
+
   private createSelectorAreaElementStr(): string{
     let elementString: string = ''
 
@@ -50,7 +54,7 @@ export class CodeViewer{
 
     for(let [caok, cao] of Object.entries(this.codeAreaObjDict)){
       elementString += `
-        <div id='codeArea_${cao.codeViewerSetting.title}${caok}' class='codeViewerCodeArea textSelectable' ${(isFirstLoop ? '' : 'style="display: none;"')}>
+        <div id='${this.generateCodeAreaId(caok)}' class='codeViewerCodeArea textSelectable' ${(isFirstLoop ? '' : 'style="display: none;"')}>
           ${await window.electronApi.shikiCodeToHtml(cao.codeViewerSetting.code, cao.codeViewerSetting.option)}
         </div>
       `
@@ -62,8 +66,8 @@ export class CodeViewer{
   }
 
   private loadCodeAreaJqueryElements(){
-    for(let [caok, cao] of Object.entries(this.codeAreaObjDict)){
-      this.codeAreaObjDict[caok].jqueryElement = $(`#codeArea_${cao.codeViewerSetting.title}${caok}`)
+    for(let [caok, _] of Object.entries(this.codeAreaObjDict)){
+      this.codeAreaObjDict[caok].jqueryElement = $(`#${this.generateCodeAreaId(caok)}`)
     }
   }
 

@@ -8,12 +8,12 @@ import '../../../../css/index/mainContents/modalPage.css'
 
 const OpenTestModalButtonByBsCodeViewerSettings: CodeViewerSetting[] = [
   {
-    title: 'pug',
+    title: 'pug(button)',
     code: ModalPageExapleCodes.OpenTestModalButtonByBs.buttonPug,
     option: {lang: 'pug', theme: 'nord'},
   },
   {
-    title: 'pug',
+    title: 'pug(modal)',
     code: ModalPageExapleCodes.OpenTestModalButtonByBs.modalPug,
     option: {lang: 'pug', theme: 'nord'},
   }
@@ -21,19 +21,19 @@ const OpenTestModalButtonByBsCodeViewerSettings: CodeViewerSetting[] = [
 
 const OpenTestModalButtonByJsCodeViewerSettings: CodeViewerSetting[] = [
   {
-    title: 'pug1',
+    title: 'pug(button)',
     code: ModalPageExapleCodes.OpenTestModalButtonByJs.buttonPug,
     option: {lang: 'pug', theme: 'nord'},
   },
   {
-    title: 'pug2',
+    title: 'pug(modal)',
     code: ModalPageExapleCodes.OpenTestModalButtonByJs.modalPug,
     option: {lang: 'pug', theme: 'nord'},
   },
   {
-    title: 'js',
+    title: 'typescript',
     code: ModalPageExapleCodes.OpenTestModalButtonByJs.js,
-    option: {lang: 'js', theme: 'nord'},
+    option: {lang: 'typescript', theme: 'nord'},
   }
 ]
 
