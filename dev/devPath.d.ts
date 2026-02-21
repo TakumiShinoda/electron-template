@@ -6,6 +6,7 @@ declare const devPath: {
     images: (file: string) => string
   }
   distPath: {
+    root: (file: string) => string
     app: (file: string) => string
     preload: (file: string) => string
     bundle: (file: string) => string

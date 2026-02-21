@@ -1,3 +1,4 @@
+const fsp = require('fs').promises
 const gulp = require('gulp')
 const pug = require('gulp-pug')
 const electron = require('electron-connect').server.create()
@@ -7,6 +8,15 @@ const webpackConfigMain = require('./build/webpack.config.main.js')
 const webpackConfigPreload = require('./build/webpack.config.preload.js')
 const webpackConfigRenderer = require('./build/webpack.config.renderer.js')
 const {copyChain, routes} = require('./build/gulpChain.json')
+
+function secureRandomString(length = 8){
+  const Chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+  const Bytes = new Uint8Array(length)
+
+  crypto.getRandomValues(Bytes)
+
+  return Array.from(Bytes, b => Chars[b % Chars.length]).join('')
+}
 
 function webpackBuildTask(config){
   return new Promise((res, rej) => {
@@ -86,6 +96,15 @@ gulp.task('asset_copy', () => {
   })
 })
 
+gulp.task('reload', () => {
+  return new Promise(async (res, rej) => {
+    try{
+      await fsp.writeFile('./dist/reload', secureRandomString())
+      res()
+    }catch(err){rej(err)}
+  })
+})
+
 gulp.task('restart', () => {
   return new Promise((res) => {
     electron.restart()
@@ -95,7 +114,7 @@ gulp.task('restart', () => {
 
 gulp.task('watcher', () => {
   new Promise((res) => {
-    gulp.watch(['./src/**', '!./src/app/**'], gulp.series('dist'))
+    gulp.watch(['./src/**', '!./src/app/**'], gulp.series('dist', 'reload'))
     gulp.watch('./src/app/**', gulp.series('make_main', 'restart'))
     electron.start('./dev/devStart.js')
     res()

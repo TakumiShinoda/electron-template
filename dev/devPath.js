@@ -19,6 +19,9 @@ module.exports = {
     }
   },
   distPath: {
+    root: (file) => {
+      return path.resolve(`${DistPath}`) + file
+    },
     app: (file) => {
       return path.resolve(`${DistPath}/app`) + file
     },
