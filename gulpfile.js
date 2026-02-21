@@ -122,4 +122,4 @@ gulp.task('watcher', () => {
 })
 
 gulp.task('dist', gulp.parallel('asset_copy', 'pug_compile', 'make_bundle'))
-gulp.task('start', gulp.series('make_main', 'dist', 'watcher'))
+gulp.task('start', gulp.series('make_main', 'dist', 'reload', 'watcher'))

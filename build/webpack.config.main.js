@@ -30,5 +30,8 @@ module.exports = {
     fallback: {
       fsevents: false
     }
+  },
+  cache: {
+    type: "filesystem"
   }
 }

@@ -70,6 +70,9 @@ module.exports = {
       },
       resolve: {
         extensions: [".ts", ".tsx", ".js"]
+      },
+      cache: {
+        type: "filesystem"
       }
     }
   }
