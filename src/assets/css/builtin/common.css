@@ -11,6 +11,10 @@
   --borderRadiusSharp: 5px;
   --borderRadiusRound: 12px;
 
+  --fontSizeNormal: 18px;
+  --fontSizeSmall: 13px;
+  --fontSizeLarge: 25px;
+
   --transitionNormalDuration: 0.8s;
   --transitionSlowDuration: 1.3s;
   --transitionFastDuration: 0.3s;

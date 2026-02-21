@@ -5,15 +5,19 @@ div.mainContent#modalPage
     h5 Custom Modal
     div.exampleContentArea
       div.exampleContentRow
-        div#openTestModalButtonByBs.btn.btn-success(data-bs-toggle="modal" data-bs-target="#testModal") Open by BS
+        div#openTestModalButtonByBs.btn.btn-success(data-bs-toggle='modal' data-bs-target='#testModal') Open by BS
       div.exampleContentRow
-        div#openTestModalButtonByBsCodeArea
+        div(data-bs-toggle='collapse' data-bs-target='#openTestModalButtonByBsCodeArea') ▼ Code
+      div.exampleContentRow
+        div#openTestModalButtonByBsCodeArea.collapse
     div.exampleContentArea
       div.exampleContentRow
         div#openTestModalButtonByJs.btn.btn-primary Open by js
       div.exampleContentRow
-        div#openTestModalButtonByJsCodeArea
-    div#testModal.modal.fade(tabindex="-1" aria-hidden="true")
+        div(data-bs-toggle='collapse' data-bs-target='#openTestModalButtonByJsCodeArea') ▼ Code
+      div.exampleContentRow
+        div#openTestModalButtonByJsCodeArea.collapse
+    div#testModal.modal.fade(tabindex='-1' aria-hidden='true')
       div#testModalDialog.modal-dialog.modal-dialog-centered
         div#testModalContent.modal-content
           div#testModalHeader.modal-header
