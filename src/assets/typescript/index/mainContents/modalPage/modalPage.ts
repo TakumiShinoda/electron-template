@@ -4,14 +4,16 @@ import {Modal} from 'bootstrap'
 import {CodeViewer, CodeViewerSetting} from '../../../builtin/codeViewer'
 import { ModalPageExapleCodes } from './exampleCodes'
 
+import '../../../../css/index/mainContents/modalPage.css'
+
 const OpenTestModalButtonByBsCodeViewerSettings: CodeViewerSetting[] = [
   {
-    title: 'pug1',
+    title: 'pug',
     code: ModalPageExapleCodes.OpenTestModalButtonByBs.buttonPug,
     option: {lang: 'pug', theme: 'nord'},
   },
   {
-    title: 'pug2',
+    title: 'pug',
     code: ModalPageExapleCodes.OpenTestModalButtonByBs.modalPug,
     option: {lang: 'pug', theme: 'nord'},
   }

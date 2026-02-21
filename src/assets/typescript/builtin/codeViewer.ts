@@ -3,6 +3,7 @@ import * as _shikijs_types from '@shikijs/types'
 import {BundledLanguage, BundledTheme} from "shiki"
 
 import '../../css/builtin/codeViewer.css'
+import { secureRandomString } from './utils'
 
 export interface CodeViewerSetting{
   title: string,
@@ -10,18 +11,32 @@ export interface CodeViewerSetting{
   option: _shikijs_types.CodeToHastOptions<BundledLanguage, BundledTheme>,
 }
 
+interface CodeAreaObj{
+  codeViewerSetting: CodeViewerSetting
+  jqueryElement: JQuery<HTMLElement> | undefined
+}
+
 export class CodeViewer{
+  private codeAreaObjDict: {[randomKey: string]: CodeAreaObj} = {}
+
   constructor(selector: string, settings: CodeViewerSetting[]){
-    this.create(selector, settings)
+    for(let s of settings){
+      this.codeAreaObjDict[secureRandomString(8)] = {
+        codeViewerSetting: s,
+        jqueryElement: undefined
+      }
+    }
+
+    this.create(selector)
   }
 
-  private createSelectorAreaElementStr(settings: CodeViewerSetting[]): string{
+  private createSelectorAreaElementStr(): string{
     let elementString: string = ''
 
     elementString += `<div class='codeViewerSelectorArea bg-primary'>`
-    for(let s of settings){
+    for(let [caok, cao] of Object.entries(this.codeAreaObjDict)){
       elementString += `
-        <div class='codeViewerTitle' codeViewerTitle='${s.title}'>${s.title}</div>
+        <div class='codeViewerTitle' codeAreaRandomKey='${caok}'>${cao.codeViewerSetting.title}</div>
       `
     }
     elementString += `</div>`
@@ -29,21 +44,30 @@ export class CodeViewer{
     return elementString
   }
 
-  private async createCodeAreaElementStr(settings: CodeViewerSetting[]): Promise<string>{
+  private async createCodeAreaElementStr(): Promise<string>{
+    let isFirstLoop: boolean = true
     let elementString: string = ''
 
-    for(let [si, s] of Object.entries(settings)){
+    for(let [caok, cao] of Object.entries(this.codeAreaObjDict)){
       elementString += `
-        <div id='codeArea_${s.title}' class='codeViewerCodeArea textSelectable' ${(si != '0' ? 'style="display: none;"' : '')}>
-          ${await window.electronApi.shikiCodeToHtml(s.code, s.option)}
+        <div id='codeArea_${cao.codeViewerSetting.title}${caok}' class='codeViewerCodeArea textSelectable' ${(isFirstLoop ? '' : 'style="display: none;"')}>
+          ${await window.electronApi.shikiCodeToHtml(cao.codeViewerSetting.code, cao.codeViewerSetting.option)}
         </div>
       `
+
+      isFirstLoop = false
     }
 
     return elementString
   }
 
-  private async create(selector: string, settings: CodeViewerSetting[]){
+  private loadCodeAreaJqueryElements(){
+    for(let [caok, cao] of Object.entries(this.codeAreaObjDict)){
+      this.codeAreaObjDict[caok].jqueryElement = $(`#codeArea_${cao.codeViewerSetting.title}${caok}`)
+    }
+  }
+
+  private async create(selector: string){
     let targetJqueryElement: JQuery<HTMLElement> = $(selector)
     let targetElement: HTMLElement | undefined = targetJqueryElement.get(0)
     let mutationObserverBuff: MutationObserver
@@ -53,35 +77,50 @@ export class CodeViewer{
     mutationObserverBuff = new MutationObserver((mutations: MutationRecord[]) => {
       for(let m of mutations){
         if(m.type != 'childList') continue
-          $('.codeViewerCodeArea pre.shiki').addClass('scrollBasicNarrow')
-          $('.codeViewerTitle').on('click', (ev: JQuery.ClickEvent) => {
-            let clickedJqueryElement: JQuery<HTMLElement> = $(ev.currentTarget)
-            let codeViewerTitle: string | undefined = clickedJqueryElement.attr('codeViewerTitle')
+        
+        targetJqueryElement.find('.codeViewerCodeArea pre.shiki').addClass('scrollBasicNarrow')
+        targetJqueryElement.find('.codeViewerTitle').on('click', (ev: JQuery.ClickEvent) => {
+          let clickedJqueryElement: JQuery<HTMLElement> = $(ev.currentTarget)
+          let codeAreaRandomKey: string | undefined = clickedJqueryElement.attr('codeAreaRandomKey')
 
-            if(codeViewerTitle == undefined) return
+          if(codeAreaRandomKey == undefined) return
 
-            this.show(codeViewerTitle)
-          })
-        }
+          this.show(codeAreaRandomKey)
+        })
+
+        this.loadCodeAreaJqueryElements()
+      }
     })
     mutationObserverBuff.observe(targetElement, {childList: true})
 
     targetJqueryElement.append($(`
       <div class='codeViewer'>
-        ${this.createSelectorAreaElementStr(settings)}
+        ${this.createSelectorAreaElementStr()}
         <div id='codeViewer${selector}'>
-          ${await this.createCodeAreaElementStr(settings)}
+          ${await this.createCodeAreaElementStr()}
         </div>
       </div>
     `))
   }
 
   private hideAll(){
-    $('.codeViewerCodeArea').css('display', 'none')
+    for(let [_, cao] of Object.entries(this.codeAreaObjDict)){
+      if(cao.jqueryElement == undefined) continue
+
+      cao.jqueryElement.css('display', 'none')
+    }
   }
 
-  private show(title: string){
+  private show(randomKey: string){
+    let codeAreaObj: CodeAreaObj | undefined = this.codeAreaObjDict[randomKey]
+
+    if(codeAreaObj == undefined) return
+    if(
+      (codeAreaObj.jqueryElement == undefined) ||
+      (codeAreaObj.jqueryElement.length == 0)
+    ) return
+
     this.hideAll()
-    $(`#codeArea_${title}`).css('display', 'block')
+    codeAreaObj.jqueryElement.css('display', 'block')
   }
 }

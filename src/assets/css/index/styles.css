@@ -3,7 +3,6 @@
 @import '../colors.css';
 @import '../builtin/common.css';
 @import '../builtin/titlebar.css';
-@import './mainContents/modalPage.css';
 
 :root{
   --contentAreaWidth: 100%;
@@ -55,7 +54,6 @@ hr{
   width: 100%;
   padding: var(--contentPaddingNormal);
   margin-bottom: var(--contentSpanNormal);
-  overflow-x: hidden;
 }
 
 .exampleContentRow{
@@ -63,5 +61,4 @@ hr{
   align-items: center;
   width: 100%;
   margin-bottom: var(--contentSpanNormal);
-  overflow-x: hidden;
 }

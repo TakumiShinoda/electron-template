@@ -16,13 +16,14 @@ div#modalPageTitleArea{
   justify-content: start;
   width: 100%;
   height: var(--modalPageContentAreaHeight);
+  overflow-y: scroll;
 }
 
 #openTestModalButtonByBsCodeArea{
   width: 100%;
 }
 
-#openTestModalButtonByjsCodeArea{
+#openTestModalButtonByJsCodeArea{
   width: 100%;
 }
 
