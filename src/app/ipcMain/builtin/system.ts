@@ -1,4 +1,17 @@
+import fs from 'fs'
 import { BrowserWindow } from "electron"
+
+import { distPath } from "../../../../dev/devPath"
+
+export function getSrcFromDist(_: Electron.IpcMainInvokeEvent, pathFromDist: string){
+  return new Promise((res, rej) => {
+    try{
+      res(fs.readFileSync(`${distPath.bundle(pathFromDist)}`).toString())
+    }catch(err){
+      rej(err)
+    }
+  })
+}
 
 export function minimizeWindow(ev: Electron.IpcMainInvokeEvent) {
   let window: Electron.BrowserWindow | null = BrowserWindow.fromWebContents(ev.sender)

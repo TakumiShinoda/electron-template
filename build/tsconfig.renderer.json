@@ -7,6 +7,6 @@
   },
   "include": [
     "../src/assets/**/*",
-    "../src/app/preload/**/*.d.ts"
+    "../src/preload/**/*.d.ts"
   ]
 }

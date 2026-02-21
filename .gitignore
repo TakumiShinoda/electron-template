@@ -3,6 +3,7 @@
 
 package-lock.json
 yarn.lock
+.webpack-cache
 /node_modules
 /dist
 /publish

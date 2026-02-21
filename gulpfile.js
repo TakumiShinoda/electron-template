@@ -61,6 +61,7 @@ gulp.task('make_bundle', () => {
       }
 
       await Promise.all(buildTasks)
+      for(let t of buildTasks) await t
       res()
     }catch(err){rej(err)}
   })
@@ -114,7 +115,7 @@ gulp.task('restart', () => {
 
 gulp.task('watcher', () => {
   new Promise((res) => {
-    gulp.watch(['./src/**', '!./src/app/**'], gulp.series('dist', 'reload'))
+    gulp.watch(['./src/assets/**', './src/views/**', './src/preload/**'], gulp.series('dist', 'reload'))
     gulp.watch('./src/app/**', gulp.series('make_main', 'restart'))
     electron.start('./dev/devStart.js')
     res()

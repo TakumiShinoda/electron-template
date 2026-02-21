@@ -3,7 +3,7 @@ import dedent from 'ts-dedent'
 export namespace InternalBrowserPageExampleCodes{
   export namespace InternalBrowserWebview{
     export const pug: string = dedent`
-      webview#internalBrowserWebview.nodragmovable(src="https://www.google.com" preload="../../js/index/webviewResources/webviewExm1/domReady.js")
+      webview#internalBrowserWebview(src="https://www.google.com" preload="../../preload/internalBrowser.js")
     `
     export const main: string = dedent`
       mainWindow = new BrowserWindow({

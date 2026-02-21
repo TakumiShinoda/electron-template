@@ -1,4 +1,5 @@
 declare const devPath: {
+  root: string,
   nodeModule: string
   srcPath: {
     js: (file: string) => string

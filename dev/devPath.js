@@ -6,6 +6,7 @@ const RootPath = IsPackaged ? path.dirname(process.execPath) : process.cwd()
 const DistPath = IsPackaged ? `${RootPath}/resources/app.asar/dist` : `${RootPath}/dist`
 
 module.exports = {
+  root: RootPath,
   nodeModule: `${RootPath}/node_modules`,
   srcPath: {
     js: (file) => {
@@ -26,7 +27,7 @@ module.exports = {
       return path.resolve(`${DistPath}/app`) + file
     },
     preload: (file) => {
-      return path.resolve(`${DistPath}/app/preload`) + file
+      return path.resolve(`${DistPath}/preload`) + file
     },
     bundle: (file) => {
       return path.resolve(`${DistPath}/bundles`) + file

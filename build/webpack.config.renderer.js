@@ -1,4 +1,7 @@
+const path = require('path')
+
 const {distPath} = require('../dev/devPath')
+const devPath = require('../dev/devPath')
 
 module.exports = {
   config: (routes) => {
@@ -72,7 +75,11 @@ module.exports = {
         extensions: [".ts", ".tsx", ".js"]
       },
       cache: {
-        type: "filesystem"
+        type: "filesystem",
+        buildDependencies: {
+          config: [__filename],
+        },
+        cacheDirectory: `${devPath.root}/.webpack-cache`
       }
     }
   }
