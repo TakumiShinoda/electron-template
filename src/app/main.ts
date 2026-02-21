@@ -9,8 +9,10 @@ let mainWindow: BrowserWindow | undefined = undefined
 
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
-    width: 960,
-    height: 770,
+    width: 720,
+    height: 480,
+    minWidth: 720,
+    minHeight: 480,
     resizable: true,
     movable: true,
     webPreferences: {
