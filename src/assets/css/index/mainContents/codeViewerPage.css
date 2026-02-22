@@ -1,0 +1,34 @@
+:root{
+  --codeViewerPageTitleAreaHeight: 50px;
+  --codeViewerPageContentAreaHeight: calc(100% - var(--modalPageTitleAreaHeight));
+}
+
+#codeViewerPageTitleArea{
+  width: 100%;
+  height: var(--codeViewerPageTitleAreaHeight);
+}
+
+#codeViewerPageContentArea{
+  display: flex;
+  flex-direction: column; 
+  justify-content: start;
+  width: 100%;
+  height: var(--codeViewerPageContentAreaHeight);
+  overflow-y: scroll;
+}
+
+#codeViewerExampleByShiki{
+  width: 100%;
+}
+
+#byShikiCodeArea{
+  width: 100%;
+}
+
+#codeViewerExampleByCodeViewer{
+  width: 100%;
+}
+
+#byCodeViewerCodeArea{
+  width: 100%;
+}

@@ -1,5 +1,20 @@
 div.mainContent#codeViewerPage
-  h2 Code Viewer
-  div.exampleContentArea
-    div.exampleContentRow
-      div#codeViewerExampleByShiki.textSelectable
+  div#codeViewerPageTitleArea
+    h2 Code Viewer
+  div#codeViewerPageContentArea.scrollBasicNormal
+    h5 By Shiki
+    div.exampleContentArea
+      div.exampleContentRow
+        div#codeViewerExampleByShiki.textSelectable
+      div.exampleContentRow
+        div(data-bs-toggle='collapse' data-bs-target='#byShikiCodeArea') ▼ Code
+      div.exampleContentRow
+        div#byShikiCodeArea.collapse
+    h5 By CodeViewer
+    div.exampleContentArea
+      div.exampleContentRow
+        div#codeViewerExampleByCodeViewer.textSelectable
+      div.exampleContentRow
+        div(data-bs-toggle='collapse' data-bs-target='#byCodeViewerCodeArea') ▼ Code
+      div.exampleContentRow
+        div#byCodeViewerCodeArea.collapse
