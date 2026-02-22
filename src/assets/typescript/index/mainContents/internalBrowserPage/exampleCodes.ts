@@ -6,10 +6,38 @@ export namespace InternalBrowserPageExampleCodes{
       webview#internalBrowserWebview(src="https://www.google.com" preload="../../preload/internalBrowser.js")
     `
     export const main: string = dedent`
+      // add \`webviewTag: true\` to webPreferences
       mainWindow = new BrowserWindow({
         webPreferences: {
           webviewTag: true,
         },
+      })
+    `
+    export const preloadForWebview: string = dedent`
+      import {contextBridge, ipcRenderer} from 'electron'
+      import { insertScript } from '../buildin/utils'
+      
+      contextBridge.exposeInMainWorld('electronApi', {
+      })
+      
+      document.addEventListener('DOMContentLoaded', async (_) => {
+        let jsSrc: string = await ipcRenderer.invoke('getSrcFromDist', '/internalBrowser.js')
+      
+        insertScript(jsSrc)
+      
+        console.log('Preload loaded.')
+      })
+    `
+    export const rendererForWebview: string = dedent`
+      import $ from 'jquery'
+
+      import '../../css/internalBrowser/style.css'
+
+      $(function (){
+        $('body').css('background', '#FF0000')
+        $('body').addClass('scrollPrimaryNarrow')
+
+        console.log('Renderer loaded.')
       })
     `
   }

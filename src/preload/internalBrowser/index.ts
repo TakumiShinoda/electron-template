@@ -1,4 +1,4 @@
-import {contextBridge, FileFilter, ipcRenderer} from 'electron'
+import {contextBridge, ipcRenderer} from 'electron'
 import { insertScript } from '../buildin/utils'
 
 contextBridge.exposeInMainWorld('electronApi', {

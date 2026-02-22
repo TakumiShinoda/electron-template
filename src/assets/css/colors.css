@@ -1,5 +1,9 @@
 :root{
-  --windowThemeColor: #1f1f1f;
-  --windowThemeColorDark: #181818;
-  --windowThemeColorBorder: #4b4b4b;
+  --windowThemeColor: rgb(31, 31, 31);
+  --windowThemeColorDark: rgb(24, 24, 24);
+  --windowThemeColorBorder: rgb(75, 75, 75);
+
+  --primaryThemeColor: rgb(13, 110, 253);
+  --primaryThemeColorDark: rgb(5, 44, 101);
+  --primaryThemeColorBorder: rgb(158, 197, 254);
 }

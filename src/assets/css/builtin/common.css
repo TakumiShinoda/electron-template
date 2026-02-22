@@ -1,3 +1,5 @@
+@import '../colors.css';
+
 :root{
   --contentSpanNormal: 10px;
   --contentSpanNarrow: 5px;
@@ -22,8 +24,10 @@
   --scrollWidthNormal: 15px;
   --scrollWidthNarrow: 10px;
   --scrollWidthBold: 20px;
-  --scrollTrackColor: var(--windowThemeColorBorder);
-  --scrollThumbColor: var(--windowThemeColorDark);
+  --scrollBasicTrackColor: var(--windowThemeColorBorder);
+  --scrollBasicThumbColor: var(--windowThemeColorDark);
+  --scrollPrimaryTrackColor: var(--primaryThemeColorBorder);
+  --scrollPrimaryThumbColor: var(--primaryThemeColor);
 }
 
 .windowDraggable{
@@ -45,12 +49,12 @@
   }
 
   &::-webkit-scrollbar-track{
-    background-color: var(--windowThemeColorBorder);
+    background-color: var(--scrollBasicTrackColor);
     border-radius: var(--borderRadiusNormal);
   }
   
   &::-webkit-scrollbar-thumb {
-    background-color: var(--windowThemeColorDark);
+    background-color: var(--scrollBasicThumbColor);
     border-radius: var(--borderRadiusNormal);
   }
   
@@ -66,12 +70,12 @@
   }
 
   &::-webkit-scrollbar-track{
-    background-color: var(--scrollTrackColor);
+    background-color: var(--scrollBasicTrackColor);
     border-radius: var(--borderRadiusSharp);
   }
   
   &::-webkit-scrollbar-thumb {
-    background-color: var(--scrollThumbColor);
+    background-color: var(--scrollBasicThumbColor);
     opacity: 0.5;
     border-radius: var(--borderRadiusSharp);
   }
@@ -88,12 +92,76 @@
   }
 
   &::-webkit-scrollbar-track{
-    background-color: var(--scrollTrackColor);
+    background-color: var(--scrollBasicTrackColor);
     border-radius: var(--borderRadiusRound);
   }
   
   &::-webkit-scrollbar-thumb {
-    background-color: var(--scrollThumbColor);
+    background-color: var(--scrollBasicThumbColor);
+    border-radius: var(--borderRadiusRound);
+  }
+  
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+.scrollPrimaryNormal{
+  &::-webkit-scrollbar {
+    width: var(--scrollWidthNormal);
+    height: var(--scrollWidthNormal);
+  }
+
+  &::-webkit-scrollbar-track{
+    background-color: var(--scrollPrimaryTrackColor);
+    border-radius: var(--borderRadiusNormal);
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--scrollPrimaryThumbColor);
+    border-radius: var(--borderRadiusNormal);
+  }
+  
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+.scrollPrimaryNarrow{
+  &::-webkit-scrollbar {
+    width: var(--scrollWidthNarrow);
+    height: var(--scrollWidthNarrow);
+  }
+
+  &::-webkit-scrollbar-track{
+    background-color: var(--scrollPrimaryTrackColor);
+    border-radius: var(--borderRadiusSharp);
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--scrollPrimaryThumbColor);
+    opacity: 0.5;
+    border-radius: var(--borderRadiusSharp);
+  }
+  
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+.scrollPrimaryBold{
+  &::-webkit-scrollbar {
+    width: var(--scrollWidthBold);
+    height: var(--scrollWidthBold);
+  }
+
+  &::-webkit-scrollbar-track{
+    background-color: var(--scrollPrimaryTrackColor);
+    border-radius: var(--borderRadiusRound);
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--scrollPrimaryThumbColor);
     border-radius: var(--borderRadiusRound);
   }
   

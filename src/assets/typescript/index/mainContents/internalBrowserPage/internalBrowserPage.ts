@@ -13,8 +13,18 @@ const InternalBrowserWebviewCodeAreaCodeViewerSettings: CodeViewerSetting[] = [
     option: {lang: 'pug', theme: 'nord'},
   },
   {
-    title: 'typescirpt(main)',
+    title: 'main',
     code: InternalBrowserPageExampleCodes.InternalBrowserWebview.main,
+    option: {lang: 'typescript', theme: 'nord'},
+  },
+  {
+    title: 'preload for webview',
+    code: InternalBrowserPageExampleCodes.InternalBrowserWebview.preloadForWebview,
+    option: {lang: 'typescript', theme: 'nord'},
+  },
+  {
+    title: 'renderer for webview',
+    code: InternalBrowserPageExampleCodes.InternalBrowserWebview.rendererForWebview,
     option: {lang: 'typescript', theme: 'nord'},
   },
 ]
