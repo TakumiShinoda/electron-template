@@ -17,8 +17,13 @@ const OnewayIpcCodeViewerSettings: CodeViewerSetting[] = [
     option: {lang: 'typescript', theme: 'nord'},
   },
   {
-    title: 'preload',
-    code: IpcCommunicationPageExapleCodes.OnewayIpc.preload,
+    title: 'preload(.ts)',
+    code: IpcCommunicationPageExapleCodes.OnewayIpc.preloadImplement,
+    option: {lang: 'typescript', theme: 'nord'},
+  },
+  {
+    title: 'preload(.d.ts)',
+    code: IpcCommunicationPageExapleCodes.OnewayIpc.preloadDeclaration,
     option: {lang: 'typescript', theme: 'nord'},
   }
 ]
@@ -35,8 +40,13 @@ const WithRespIpcCodeViewerSettings: CodeViewerSetting[] = [
     option: {lang: 'typescript', theme: 'nord'},
   },
   {
-    title: 'preload',
-    code: IpcCommunicationPageExapleCodes.WithRespIpc.preload,
+    title: 'preload(.ts)',
+    code: IpcCommunicationPageExapleCodes.WithRespIpc.preloadImplement,
+    option: {lang: 'typescript', theme: 'nord'},
+  },
+  {
+    title: 'preload(.d.ts)',
+    code: IpcCommunicationPageExapleCodes.WithRespIpc.preloadDeclaration,
     option: {lang: 'typescript', theme: 'nord'},
   }
 ]

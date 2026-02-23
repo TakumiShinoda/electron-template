@@ -15,14 +15,40 @@ export namespace IpcCommunicationPageExapleCodes{
       }
     `
     export const renderer: string = dedent`
-      window.electronApi.openDialog({message: 'Dialog by preload process.'})
+      window.electronApiIndex.buildin.openDialog({message: 'Dialog by preload process.'})
     `
-    export const preload: string = dedent`
+    export const preloadImplement: string = dedent`
       import {contextBridge, ipcRenderer} from 'electron'
 
-      contextBridge.exposeInMainWorld('electronApi', {
-        openDialog: (options: Electron.MessageBoxOptions) => ipcRenderer.send('openDialog', options),
-      })
+      const ElectronApi: ElectronApiIndex = {
+        custom: {
+          shikiCodeToHtml: (code: string, options: _shikijs_types.CodeToHastOptions<BundledLanguage, BundledTheme>) => ipcRenderer.invoke('shikiCodeToHtml', code, options)
+        },
+        buildin: ElectronApiBuildin_
+      }
+
+      contextBridge.exposeInMainWorld('electronApiIndex', ElectronApi)
+    `
+    export const preloadDeclaration = dedent`
+      import * as _shikijs_types from '@shikijs/types'
+      import {BundledLanguage, BundledTheme} from "shiki"
+
+      import { ElectronApiBuildin } from './buildin'
+
+      export interface ElectronApiIndexCustom{
+        shikiCodeToHtml: (code: string, options: _shikijs_types.CodeToHastOptions<BundledLanguage, BundledTheme>) => Promise<string>,
+      }
+
+      export interface ElectronApiIndex{
+        custom: ElectronApiIndexCustom,
+        buildin: ElectronApiBuildin
+      }
+
+      declare global{
+        interface Window{
+          electronApiIndex: ElectronApiIndex
+        }
+      }
     `
   }
 
@@ -47,14 +73,40 @@ export namespace IpcCommunicationPageExapleCodes{
         }
       ]
 
-      await window.electronApi.openFileDialog(dialogFilter)
+      paths = await window.electronApiIndex.buildin.openFileDialog(dialogFilter)
     `
-    export const preload: string = dedent`
-      import {contextBridge, FileFilter, ipcRenderer} from 'electron'
-      
-      contextBridge.exposeInMainWorld('electronApi', {
-        openFileDialog: (filters: FileFilter[]) => ipcRenderer.invoke('openFileDialog', filters)
-      })
+    export const preloadImplement: string = dedent`
+      import {contextBridge, ipcRenderer} from 'electron'
+
+      const ElectronApi: ElectronApiIndex = {
+        custom: {
+          shikiCodeToHtml: (code: string, options: _shikijs_types.CodeToHastOptions<BundledLanguage, BundledTheme>) => ipcRenderer.invoke('shikiCodeToHtml', code, options)
+        },
+        buildin: ElectronApiBuildin_
+      }
+
+      contextBridge.exposeInMainWorld('electronApiIndex', ElectronApi)
+    `
+    export const preloadDeclaration: string = dedent`
+      import * as _shikijs_types from '@shikijs/types'
+      import {BundledLanguage, BundledTheme} from "shiki"
+
+      import { ElectronApiBuildin } from './buildin'
+
+      export interface ElectronApiIndexCustom{
+        shikiCodeToHtml: (code: string, options: _shikijs_types.CodeToHastOptions<BundledLanguage, BundledTheme>) => Promise<string>,
+      }
+
+      export interface ElectronApiIndex{
+        custom: ElectronApiIndexCustom,
+        buildin: ElectronApiBuildin
+      }
+
+      declare global{
+        interface Window{
+          electronApiIndex: ElectronApiIndex
+        }
+      }
     `
   }
 }
