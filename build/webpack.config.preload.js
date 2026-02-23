@@ -5,7 +5,7 @@ module.exports = {
     return {
       mode: 'development',
       target: 'electron-preload',
-      entry: `./src/preload/${routes}/index.ts`,
+      entry: `./src/preload/${routes}/${routes}.ts`,
       output: {
         path: distPath.preload('/'),
         filename: `${routes}.js`

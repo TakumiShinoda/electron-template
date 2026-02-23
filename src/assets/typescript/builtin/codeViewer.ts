@@ -55,7 +55,7 @@ export class CodeViewer{
     for(let [caok, cao] of Object.entries(this.codeAreaObjDict)){
       elementString += `
         <div id='${this.generateCodeAreaId(caok)}' class='codeViewerCodeArea textSelectable' ${(isFirstLoop ? '' : 'style="display: none;"')}>
-          ${await window.electronApi.shikiCodeToHtml(cao.codeViewerSetting.code, cao.codeViewerSetting.option)}
+          ${await window.electronApiIndex.custom.shikiCodeToHtml(cao.codeViewerSetting.code, cao.codeViewerSetting.option)}
         </div>
       `
 

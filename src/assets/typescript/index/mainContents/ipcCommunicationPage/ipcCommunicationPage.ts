@@ -46,7 +46,7 @@ $(function (){
   new CodeViewer('#withRespIpcCodeArea', WithRespIpcCodeViewerSettings)
 
   $('#onewayIpcButton').on('click', () => {
-    window.electronApi.openDialog({message: 'Dialog by preload process.'})
+    window.electronApiIndex.buildin.openDialog({message: 'Dialog by preload process.'})
   })
 
   $('#withRespIpcButton').on('click', async () => {
@@ -59,7 +59,7 @@ $(function (){
     let paths: string[] | undefined
     
     try{
-      paths = await window.electronApi.openFileDialog(dialogFilter)
+      paths = await window.electronApiIndex.buildin.openFileDialog(dialogFilter)
 
       if(paths == undefined){
         console.log('CANCEL')

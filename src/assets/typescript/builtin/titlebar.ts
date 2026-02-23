@@ -5,10 +5,10 @@ import '../../css/builtin/titlebar.css'
 
 $(function(){
   $('#titlebarWindowMinimizeButton').on('click', () => {
-    window.electronApi.minimizeWindow()
+    window.electronApiIndex.buildin.minimizeWindow()
   })
 
   $('#titlebarWindowCloseButton').on('click', () => {
-    window.electronApi.closeWindow()
+    window.electronApiIndex.buildin.closeWindow()
   })
 })

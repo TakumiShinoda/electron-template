@@ -47,7 +47,7 @@ const ByCodeViewerExampleCodeAreaCodeViewerSettings: CodeViewerSetting[] = [
 ]
 
 $(async function (){
-  let codeElementStr: string = await window.electronApi.shikiCodeToHtml(dedent`
+  let codeElementStr: string = await window.electronApiIndex.custom.shikiCodeToHtml(dedent`
     conosole.log('hoge')
   `, {lang: 'typescript', theme: 'nord'})
 
