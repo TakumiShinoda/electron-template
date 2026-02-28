@@ -16,7 +16,8 @@
     "reset-dist": "npm run clean-dist & npm run dist",
     "reset-build": "npm run reset-env && npm run reset-dist && npm run clean-build",
     "dist": "gulp make_main && gulp dist",
-    "build-win": "npm run reset-build && electron-builder --win"
+    "build-win": "npm run reset-build && electron-builder --win",
+    "test-ts": "npx tsx"
   },
   "author": "",
   "license": "ISC",
