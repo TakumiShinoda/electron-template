@@ -42,6 +42,12 @@
   -webkit-user-select: none;
 }
 
+.scrollHidden{
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .scrollBasicNormal{
   &::-webkit-scrollbar {
     width: var(--scrollWidthNormal);

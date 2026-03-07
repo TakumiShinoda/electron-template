@@ -16,6 +16,7 @@
   align-items: center;
   width: var(--sidemenuWidth);
   height: var(--sidemenuHeight);
+  overflow: auto;
   background-color: var(--windowThemeColorDark);
 }
 
@@ -25,6 +26,8 @@
   align-items: center;
   width: var(--sidemenuButtonWidth);
   height: var(--sidemenuButtonHeight);
+  padding-top: var(--contentSpanNarrow);
+  padding-bottom: var(--contentSpanNarrow);
   font-size: calc(var(--sidemenuButtonHeight) * var(--sidemenuButtonRatio));
 }
 
