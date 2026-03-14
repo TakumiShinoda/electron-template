@@ -17,7 +17,8 @@
     "reset-build": "npm run reset-env && npm run reset-dist && npm run clean-build",
     "dist": "gulp make_main && gulp dist",
     "build-win": "npm run reset-build && electron-builder --win",
-    "test-ts": "npx tsx"
+    "test-ts": "npx tsx",
+    "gen-ico": "npx tsx ./build/icons/cvtImgToIco.ts"
   },
   "author": "",
   "license": "ISC",
@@ -35,10 +36,12 @@
     "gulp-plumber": "1.2.1",
     "gulp-pug": "5.0.0",
     "lodash": "4.17.21",
+    "png-to-ico": "3.0.1",
     "postcss": "8.5.6",
     "postcss-loader": "8.2.0",
     "sass": "1.79.6",
     "sass-loader": "16.0.6",
+    "sharp": "0.34.5",
     "style-loader": "4.0.0",
     "ts-loader": "9.5.4",
     "typescript": "5.9.3",
@@ -53,6 +56,7 @@
     "ts-dedent": "2.2.0"
   },
   "build": {
+    "icon": "./build/icons/default.ico",
     "directories": {
       "output": "publish"
     },
@@ -62,6 +66,7 @@
       "./dist/**"
     ],
     "win": {
+      "icon": "./build/icons/default.ico",
       "target": [
         "portable"
       ]
