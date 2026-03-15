@@ -5,6 +5,7 @@ import '../builtin/titlebar'
 import '../builtin/sidemenu'
 import '../builtin/mainContents'
 import { SideMenu, SideMenuSetting } from '../builtin/sidemenu'
+import { setTitlebarAppIcon, setTitlebarTitle } from '../builtin/titlebar'
 
 import '../../css/index/styles.css'
 import './mainContents/modalPage/modalPage'
@@ -69,4 +70,6 @@ const SidemenuSettings: SideMenuSetting[] = [
 window.sideMenu = new SideMenu(SidemenuSettings)
 
 $(function (){
+  setTitlebarAppIcon('../../images/menuicon.png')
+  setTitlebarTitle('Electron Template')
 })
