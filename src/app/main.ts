@@ -1,4 +1,4 @@
-import {app, BrowserWindow, ipcMain} from 'electron'
+import {app, BrowserWindow, ipcMain, Menu, Tray} from 'electron'
 
 import {distPath} from '../../dev/devPath'
 import {openDialog, openFileDialog} from './ipcMain/dialogs'
@@ -6,6 +6,23 @@ import {closeWindow, getSrcFromDist, maximizeWindow, minimizeWindow} from './ipc
 import { codeToHtmlWrap } from './ipcMain/builtin/shikiWraper'
 
 let mainWindow: BrowserWindow | undefined = undefined
+let mainTray: Tray | undefined = undefined
+
+function setupTray(){
+  mainTray = new Tray('./build/icons/default.ico')
+
+  mainTray.setToolTip('Electron Template')
+  mainTray.setContextMenu(Menu.buildFromTemplate([
+    {label: 'Open window', click: () => mainWindow?.show()},
+    {label: 'Maximize window', click: () => mainWindow?.maximize()},
+    {label: 'Minimize window', click: () => mainWindow?.minimize()},
+    {type: 'separator'},
+    {label: 'Exit', click: () => mainWindow?.close()}
+  ]))
+  mainTray.on('click', () => {
+    mainWindow?.show()
+  })
+}
 
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
@@ -42,8 +59,13 @@ app.on('ready', () => {
 
   mainWindow.on('closed', () => {
     mainWindow = undefined
+
+    mainTray?.destroy()
+    mainTray = undefined
     
     console.log('exitApp')
     process.exit(0)
   })
+
+  setupTray()
 })
