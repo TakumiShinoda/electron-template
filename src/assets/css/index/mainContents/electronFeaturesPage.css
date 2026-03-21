@@ -1,0 +1,17 @@
+#electronFeaturesPageTitleArea{
+  width: 100%;
+  height: var(--codeViewerPageTitleAreaHeight);
+}
+
+#electronFeaturesPageContentArea{
+  display: flex;
+  flex-direction: column; 
+  justify-content: start;
+  width: 100%;
+  height: var(--codeViewerPageContentAreaHeight);
+  overflow-y: scroll;
+}
+
+#electronFeaturesExampleTrayCodeArea{
+  width: 100%;
+}

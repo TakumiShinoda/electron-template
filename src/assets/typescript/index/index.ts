@@ -12,6 +12,7 @@ import './mainContents/modalPage/modalPage'
 import './mainContents/ipcCommunicationPage/ipcCommunicationPage'
 import './mainContents/internalBrowserPage/internalBrowserPage'
 import './mainContents/codeViewerPage/codeViewerPage'
+import './mainContents/electronFeaturesPage/electronFeaturesPage'
 
 const SidemenuSettings: SideMenuSetting[] = [
   {
@@ -64,6 +65,16 @@ const SidemenuSettings: SideMenuSetting[] = [
     },
     contents: `<i class='bi bi-code-square'></i>`,
     onClick: () => {window.mainContent.show('codeViewerPage')}
+  },
+  {
+    id: 'sidemenuElectronFeaturesButton',
+    toolTipSetting: {
+      selector: '',
+      placement: 'right',
+      title: 'Electron Features'
+    },
+    contents: `<i class='bi bi-command'></i>`,
+    onClick: () => {window.mainContent.show('electronFeaturesPage')}
   }
 ]
 
