@@ -27,6 +27,16 @@ const SidemenuSettings: SideMenuSetting[] = [
     onClick: () => {window.mainContent.show('homePage')}
   },
   {
+    id: 'sidemenuElectronFeaturesButton',
+    toolTipSetting: {
+      selector: '',
+      placement: 'right',
+      title: 'Electron Features'
+    },
+    contents: `<i class='bi bi-command'></i>`,
+    onClick: () => {window.mainContent.show('electronFeaturesPage')}
+  },
+  {
     id: 'sidemenuModalButton',
     toolTipSetting: {
       selector: '',
@@ -65,16 +75,6 @@ const SidemenuSettings: SideMenuSetting[] = [
     },
     contents: `<i class='bi bi-code-square'></i>`,
     onClick: () => {window.mainContent.show('codeViewerPage')}
-  },
-  {
-    id: 'sidemenuElectronFeaturesButton',
-    toolTipSetting: {
-      selector: '',
-      placement: 'right',
-      title: 'Electron Features'
-    },
-    contents: `<i class='bi bi-command'></i>`,
-    onClick: () => {window.mainContent.show('electronFeaturesPage')}
   }
 ]
 
