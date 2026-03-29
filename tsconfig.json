@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "strict": true,
+    "module": "nodenext",
     "esModuleInterop": true,
     "typeRoots": ["./src/preload/@types"]
   }
