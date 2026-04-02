@@ -43,9 +43,7 @@ export async function getAllFilesRecursive(dirPath: string): Promise<string[]>{
   entries = await fsp.readdir(resolvedDirPath, {withFileTypes: true})
 
   for(let e of entries){
-    nextPathBuff = `${e.path}/${e.name}`.replaceAll('\\', '/')
-
-    console.log(nextPathBuff)
+    nextPathBuff = `${resolvedDirPath}/${e.name}`.replaceAll('\\', '/')
 
     if(e.isFile()) result.push(nextPathBuff)
     else result = result.concat(await getAllFilesRecursive(nextPathBuff))
