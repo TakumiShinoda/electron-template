@@ -8,6 +8,7 @@ declare const devPath: {
   }
   distPath: {
     root: (file: string) => string
+    buildIcons: (file: string) => string
     app: (file: string) => string
     preload: (file: string) => string
     bundle: (file: string) => string

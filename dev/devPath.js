@@ -23,6 +23,9 @@ module.exports = {
     root: (file) => {
       return path.resolve(`${DistPath}`) + file
     },
+    buildIcons: (file) => {
+      return path.resolve(`${DistPath}/images/build/icons`) + file
+    },
     app: (file) => {
       return path.resolve(`${DistPath}/app`) + file
     },

@@ -1,27 +1,12 @@
-import {app, BrowserWindow, ipcMain, Menu, Tray} from 'electron'
+import {app, BrowserWindow, ipcMain} from 'electron'
 
 import './globals'
-import {distPath} from '../../dev/devPath'
-import {openDialog, openFileDialog} from './ipcMain/dialogs'
-import {closeWindow, getSrcFromDist, maximizeWindow, minimizeWindow} from './ipcMain/builtin/system'
+import { distPath } from '../../dev/devPath'
+import { openDialog, openFileDialog } from './ipcMain/dialogs'
+import { closeWindow, getSrcFromDist, maximizeWindow, minimizeWindow } from './ipcMain/builtin/system'
 import { codeToHtmlWrap } from './ipcMain/builtin/shikiWraper'
 import { setupSecondInstanceLock } from './secondInstanceLock'
-
-function setupTray(){
-  MainTray = new Tray('./build/icons/default.ico')
-
-  MainTray.setToolTip('Electron Template')
-  MainTray.setContextMenu(Menu.buildFromTemplate([
-    {label: 'Open window', click: () => MainWindow?.show()},
-    {label: 'Maximize window', click: () => MainWindow?.maximize()},
-    {label: 'Minimize window', click: () => MainWindow?.minimize()},
-    {type: 'separator'},
-    {label: 'Exit', click: () => MainWindow?.close()}
-  ]))
-  MainTray.on('click', () => {
-    MainWindow?.show()
-  })
-}
+import { setupTray } from './tray'
 
 setupSecondInstanceLock()
 

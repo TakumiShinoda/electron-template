@@ -3,6 +3,10 @@
     {
       "src": "src/assets/images/**",
       "dest": "./dist/images"
+    },
+    {
+      "src": "build/icons/**",
+      "dest": "./dist/images/build/icons"
     }
   ],
   "routes": [
