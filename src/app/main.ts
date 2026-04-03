@@ -1,31 +1,32 @@
 import {app, BrowserWindow, ipcMain, Menu, Tray} from 'electron'
 
+import './globals'
 import {distPath} from '../../dev/devPath'
 import {openDialog, openFileDialog} from './ipcMain/dialogs'
 import {closeWindow, getSrcFromDist, maximizeWindow, minimizeWindow} from './ipcMain/builtin/system'
 import { codeToHtmlWrap } from './ipcMain/builtin/shikiWraper'
-
-let mainWindow: BrowserWindow | undefined = undefined
-let mainTray: Tray | undefined = undefined
+import { setupSecondInstanceLock } from './secondInstanceLock'
 
 function setupTray(){
-  mainTray = new Tray('./build/icons/default.ico')
+  MainTray = new Tray('./build/icons/default.ico')
 
-  mainTray.setToolTip('Electron Template')
-  mainTray.setContextMenu(Menu.buildFromTemplate([
-    {label: 'Open window', click: () => mainWindow?.show()},
-    {label: 'Maximize window', click: () => mainWindow?.maximize()},
-    {label: 'Minimize window', click: () => mainWindow?.minimize()},
+  MainTray.setToolTip('Electron Template')
+  MainTray.setContextMenu(Menu.buildFromTemplate([
+    {label: 'Open window', click: () => MainWindow?.show()},
+    {label: 'Maximize window', click: () => MainWindow?.maximize()},
+    {label: 'Minimize window', click: () => MainWindow?.minimize()},
     {type: 'separator'},
-    {label: 'Exit', click: () => mainWindow?.close()}
+    {label: 'Exit', click: () => MainWindow?.close()}
   ]))
-  mainTray.on('click', () => {
-    mainWindow?.show()
+  MainTray.on('click', () => {
+    MainWindow?.show()
   })
 }
 
+setupSecondInstanceLock()
+
 app.on('ready', () => {
-  mainWindow = new BrowserWindow({
+  MainWindow = new BrowserWindow({
     width: 720,
     height: 480,
     minWidth: 720,
@@ -39,13 +40,14 @@ app.on('ready', () => {
     frame: false,
     show: false
   })
-  mainWindow.loadURL(`${distPath.views('/index/index.html')}`)
 
-  mainWindow.once('ready-to-show', () => {
+  MainWindow.loadURL(`${distPath.views('/index/index.html')}`)
+
+  MainWindow.once('ready-to-show', () => {
     setTimeout(() => {
-      if(mainWindow == undefined) return
+      if(MainWindow == undefined) return
 
-      mainWindow.show()
+      MainWindow.show()
     }, 1000)
   })
 
@@ -57,11 +59,11 @@ app.on('ready', () => {
   ipcMain.on('minimizeWindow', minimizeWindow)
   ipcMain.on('closeWindow', closeWindow)
 
-  mainWindow.on('closed', () => {
-    mainWindow = undefined
+  MainWindow.on('closed', () => {
+    MainWindow = undefined
 
-    mainTray?.destroy()
-    mainTray = undefined
+    MainTray?.destroy()
+    MainTray = undefined
     
     console.log('exitApp')
     process.exit(0)
