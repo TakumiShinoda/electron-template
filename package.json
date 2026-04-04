@@ -1,6 +1,6 @@
 {
   "name": "electron-template",
-  "version": "1.0.0",
+  "version": "1.0.0_y25",
   "nodeVersion": "20.10.0",
   "description": "",
   "main": "./dist/app/main.js",
